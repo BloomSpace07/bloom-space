@@ -1,0 +1,140 @@
+/* The side navigation menu */
+.sidenav {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 99;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    left: 0;
+    background-color: #111;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.open-nav {
+    width: 250px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.icon-1,
+.icon-2,
+.icon-3 {
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    width: 32px;
+    height: 3px;
+    background-color: white;
+    transition: all 400ms cubic-bezier(0.84, 0.06, 0.52, 1.8);
+}
+
+.nav-icon-black .icon-1,
+.nav-icon-black .icon-2,
+.nav-icon-black .icon-3 {
+    background-color: black;
+}
+
+.icon-1 {
+    transform: translateY(-8px);
+    animation-delay: 100ms;
+}
+
+.icon-3 {
+    transform: translateY(8px);
+    animation-delay: 250ms;
+}
+
+.hamburger-icon {
+    position: absolute;
+    height: 5%;
+    width: 60px;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    margin: auto;
+}
+
+.icon-1.a {
+    transform: rotate(40deg);
+}
+
+.icon-3.b {
+    transform: rotate(-40deg);
+}
+
+.icon-2.c {
+    opacity: 0;
+}
+
+.nav-icon-black .icon-1.a,
+.nav-icon-black .icon-3.b {
+    background-color: white;
+}
+
+.clear {
+    clear: both;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .open-nav {
+        width: 200px;
+    }
+
+    .sidenav a {
+        font-size: 1.25em;
+        padding-left: 16px;
+    }
+
+    .nav-icon-black .icon-1,
+    .nav-icon-black .icon-2,
+    .nav-icon-black .icon-3 {
+        background-color: white;
+    }
+}

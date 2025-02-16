@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bloom Space</title>
+        <meta name="description"
+            content="Bloom Space urban garden planner's support page, where users can find frequently asked questions and contact Bloom Space's support team">
+        <meta name="keywords"
+            content="Bloom, Space, Urban, Garden, Planner, Frequently Asked Questions, Support, Contact">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="navigation.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- Icons + PWA -->
+        <link rel="icon" type="images/favicon" href="images/pwa/logo.webp">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/pwa/logo.webp">
+        <link rel="apple-touch-startup-image" href="images/pwa/logo.webp">
+        <link rel="manifest" href="manifest.json">
+
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body data-page-id="support">
+        <div class="hamburger-icon" id="icon" onclick="openNav()">
+            <div class="icon-1" id="a"></div>
+            <div class="icon-2" id="b"></div>
+            <div class="icon-3" id="c"></div>
+            <div class="clear"></div>
+        </div>
+
+        <div id="mySidenav" class="sidenav">
+            <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+            <a href="index.html?visited=true">Garden Planner</a>
+            <a href="gardening-handbook.html">Gardening Handbook</a>
+            <a href="blog.html">Blog</a>
+            <a href="support.html">Support</a>
+        </div>
+
+        <div class="support-page">
+            <h1>FAQs</h1>
+            <h2>Can't find what you're looking for? Contact us using the form below.</h2>
+            <ul class="accordion">
+                <li>
+                    <input type="checkbox" name="accordion" id="first-flap">
+                    <label for="first-flap">Can I save my garden plans for future reference?</label>
+                    <div class="accordion-content">
+                        At the moment, Bloom Space does not have a built-in save feature, but you can take screenshots
+                        of your garden layout for future reference. In a future update, we plan to introduce an account
+                        system where users can save and edit multiple garden plans.
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="second-flap">
+                    <label for="second-flap">How does the Garden Handbook work?</label>
+                    <div class="accordion-content">
+                        The Garden Handbook provides interactive, easy-to-read guides on urban gardening topics such as
+                        plant selection, sustainable practices, and maintenance. Click on a section to expand detailed
+                        information, including tips, best practices, and troubleshooting advice. The handbook is
+                        dynamically loaded to keep the app running smoothly and efficiently.
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" name="accordion" id="third-flap">
+                    <label for="third-flap">How can I contribute to the Blog or suggest new features?</label>
+                    <div class="accordion-content">
+                        We love hearing from our users! If you have gardening tips, success stories, or topics you'd
+                        like to see covered in the blog, feel free to contact us through the app. We're also open to
+                        feature suggestions—let us know what tools or improvements you'd like to see in future updates
+                        of Bloom Space!
+                    </div>
+                </li>
+            </ul>
+            <p style="padding-bottom: 10vh;"></p>
+            <div class="contact-form-container">
+                <h1>Contact Us</h1>
+                <form action="https://formspree.io/f/myzkddlq" method="POST" class="contact-form">
+                    <div class="contact-form-grid">
+                        <div>
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" required placeholder="Your name here..." />
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email" required placeholder="Your email address..." />
+                        </div>
+                        <div class="contact-message">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" required
+                                placeholder="Enter your message here..."></textarea>
+                        </div>
+                        <div class="contact-submit">
+                            <input type="submit" value="Submit" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <p style="padding-bottom: 50px;"></p>
+
+        <!-- JS -->
+        <script src="script.js"></script>
+    </body>
+
+</html>

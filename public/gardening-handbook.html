@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bloom Space</title>
+        <meta name="description"
+            content="Bloom Space urban garden planner with a variety of gardening information available for users to read and learn from">
+        <meta name="keywords"
+            content="Bloom, Space, Urban, Garden, Planner, Gardening, Handbook, Information, Learning, Articles">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="navigation.css">
+        <link rel="stylesheet" href="handbook-menu.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- Icons + PWA -->
+        <link rel="icon" type="images/favicon" href="images/pwa/logo.webp">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/pwa/logo.webp">
+        <link rel="apple-touch-startup-image" href="images/pwa/logo.webp">
+        <link rel="manifest" href="manifest.json">
+
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&?family=Martel:wght@200;300;400;600;700;800;900&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="hamburger-icon nav-icon-black" id="icon" onclick="openNav()">
+            <div class="icon-1" id="a"></div>
+            <div class="icon-2" id="b"></div>
+            <div class="icon-3" id="c"></div>
+            <div class="clear"></div>
+        </div>
+
+        <div id="mySidenav" class="sidenav">
+            <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+            <a href="index.html?visited=true">Garden Planner</a>
+            <a href="gardening-handbook.html">Gardening Handbook</a>
+            <a href="blog.html">Blog</a>
+            <a href="support.html">Support</a>
+        </div>
+
+        <div class="handbook-page">
+            <div class="handbook-menu">
+                <div class="handbook-menu-section" id="getting-started-handbook">
+                    <span>Getting Started</span>
+                    <a class="active-section" href="#choosing-your-space">Choosing Your Space</a>
+                    <a href="#understanding-microclimates">Understanding Microclimates</a>
+                    <a href="#garden-layout-ideas">Garden Layout Ideas</a>
+                    <a href="#essential-tools">Essential Tools</a>
+                </div>
+
+                <div class="handbook-menu-section" id="plant-selection-handbook">
+                    <span>Plant Selection</span>
+                    <a href="#best-plants-for-urban-gardens">Best Plants for Urban Gardens</a>
+                    <a href="#companion-planting">Companion Planting</a>
+                    <a href="#seasonal-planting-guide">Seasonal Planting Guide</a>
+                    <a href="#native-plants">Native Plants</a>
+                    <a href="#edible-vs.-ornamental-plants">Edible vs. Ornamental Plants</a>
+                </div>
+
+                <div class="handbook-menu-section" id="gardening-practices-handbook">
+                    <span>Sustainable Gardening Practices</span>
+                    <a href="#water-conservation">Water Conservation</a>
+                    <a href="#composting-basics">Composting Basics</a>
+                    <a href="#soil-health">Soil Health</a>
+                    <a href="#organic-fertilizers">Organic Fertilizers</a>
+                    <a href="#pest-management">Pest Management</a>
+                </div>
+
+                <div class="handbook-menu-section" id="maintenance-troubleshooting-handbook">
+                    <span>Maintenance and Troubleshooting</span>
+                    <a href="#daily-and-weekly-care">Daily and Weekly Care</a>
+                    <a href="#common-plant-problems">Common Plant Problems</a>
+                    <a href="#crop-rotation-and-replanting">Crop Rotation and Replanting</a>
+                    <a href="#overcoming-urban-challenges">Overcoming Urban Challenges</a>
+                </div>
+            </div>
+
+            <h1 class="handbook-title-mobile">Garden Handbook</h1>
+
+            <div class="menu-dropdown">
+                <div class="menu-select">
+                    <span class="menu-selected">Choosing Your Space</span>
+                    <div class="menu-caret"></div>
+                </div>
+                <ul class="menu-dropdown-content">
+                    <li class="menu-dropdown-active">Choosing Your Space</li>
+                    <li>Understanding Microclimates</li>
+                    <li>Garden Layout Ideas</li>
+                    <li>Essential Tools</li>
+                    <li>Best Plants for Urban Gardens</li>
+                    <li>Companion Planting</li>
+                    <li>Seasonal Planting Guide</li>
+                    <li>Native Plants</li>
+                    <li>Edible vs. Ornamental Plants</li>
+                    <li>Water Conservation</li>
+                    <li>Composting Basics</li>
+                    <li>Soil Health</li>
+                    <li>Organic Fertilizers</li>
+                    <li>Pest Management</li>
+                    <li>Daily and Weekly Care</li>
+                    <li>Common Plant Problems</li>
+                    <li>Crop Rotation and Replanting</li>
+                    <li>Overcoming Urban Challenges</li>
+                </ul>
+            </div>
+
+            <div class="handbook-content" id="handbook-content">
+                <h1 class="handbook-title-laptop">Garden Handbook</h1>
+            </div>
+        </div>
+
+        <!-- JS -->
+        <script src="script.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                displayHandbookContent();
+                document.querySelectorAll(".handbook-menu-section a").forEach(item => {
+                    item.addEventListener("click", () => {
+                        document.querySelectorAll(".handbook-menu-section a").forEach(item => {
+                            item.classList.remove("active-section");
+                        });
+                        item.classList.add("active-section");
+                    });
+                });
+            });
+
+            const dropdowns = document.querySelectorAll(".menu-dropdown");
+            dropdowns.forEach((dropdown) => {
+                const select = dropdown.querySelector(".menu-select");
+                const caret = dropdown.querySelector(".menu-caret");
+                const menu = dropdown.querySelector(".menu-dropdown-content");
+                const options = dropdown.querySelectorAll(".menu-dropdown-content li");
+                const selected = dropdown.querySelector(".menu-selected");
+
+                select.addEventListener("click", () => {
+                    select.classList.toggle("menu-select-clicked");
+                    caret.classList.toggle("menu-caret-rotate");
+                    menu.classList.toggle("menu-dropdown-content-open");
+                });
+
+                options.forEach((option) => {
+                    option.addEventListener("click", () => {
+                        selected.innerText = option.innerText;
+                        select.classList.remove("menu-select-clicked");
+                        caret.classList.remove("menu-caret-rotate");
+                        menu.classList.remove("menu-dropdown-content-open");
+                        options.forEach((option) => {
+                            option.classList.remove("menu-dropdown-active");
+                        });
+                        option.classList.add("menu-dropdown-active");
+                        console.log(option.innerText.toLowerCase().replaceAll(" ", "-"));
+                        const scrollElement = document.getElementById(`${option.innerText.toLowerCase().replaceAll(" ", "-")}`);
+                        scrollElement.scrollIntoView({ behavior: "smooth" });
+                    });
+                });
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bloom Space</title>
+        <meta name="description"
+            content="Bloom Space urban garden planner blog with new post every week about urban gardening, including best practices, tips, and benefits">
+        <meta name="keywords" content="Bloom, Space, Urban, Garden, Planner, Blog, Posts, News, Plants">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="navigation.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- Icons + PWA -->
+        <link rel="icon" type="images/favicon" href="images/pwa/logo.webp">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/pwa/logo.webp">
+        <link rel="apple-touch-startup-image" href="images/pwa/logo.webp">
+        <link rel="manifest" href="manifest.json">
+
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&?family=Martel:wght@200;300;400;600;700;800;900&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="hamburger-icon" id="icon" onclick="openNav()">
+            <div class="icon-1" id="a"></div>
+            <div class="icon-2" id="b"></div>
+            <div class="icon-3" id="c"></div>
+            <div class="clear"></div>
+        </div>
+
+        <div id="mySidenav" class="sidenav">
+            <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+            <a href="index.html?visited=true">Garden Planner</a>
+            <a href="gardening-handbook.html">Gardening Handbook</a>
+            <a href="blog.html">Blog</a>
+            <a href="support.html">Support</a>
+        </div>
+
+        <div class="blog-page">
+            <h1>Blog</h1>
+            <h2>Check to see new blog articles weekly!</h2>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="images/small-spaces-min.webp" alt="Rooftop garden area with variety of plants"
+                                class="box-img">
+                            <p class="text">Maximizing Small Spaces: Creative Urban Gardening Hacks &#8594;</p>
+                        </div>
+                        <div class="card-back">
+                            <p class="text">Urban gardening is all about making the most of limited space. Whether you
+                                have a tiny balcony, a rooftop, or just a sunny windowsill, you can create a thriving
+                                garden with some clever design strategies. Vertical gardening is one of the best ways to
+                                maximize space; use wall planters, trellises, or hanging baskets to grow plants upwards
+                                rather than outwards. Stackable planters and tiered shelving can also help fit more
+                                greenery in small areas. If you have a railing, consider using railing planters for
+                                herbs or trailing plants.
+                                <br><br>
+                                Another trick is companion planting, where you grow plants that benefit each other in
+                                the same container. For example, tomatoes and basil not only taste great together but
+                                also grow well side by side. Additionally, hydroponic and aeroponic systems offer
+                                soil-free alternatives for city dwellers looking to grow fresh produce indoors. By
+                                thinking creatively and using every inch of available space, you can transform even the
+                                smallest urban area into a lush, productive garden.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="images/soil-science-min.webp" alt="Plants on a dirt background" class="box-img">
+                            <p class="text">The Science of Soil: How to Keep Your Urban Garden Thriving &#8594;</p>
+                        </div>
+                        <div class="card-back">
+                            <p class="text">Good soil is the foundation of a successful garden, but in urban
+                                environments, soil quality can be a challenge. Many city gardeners rely on container
+                                gardening with potting mix, but not all soils are created equal. A high-quality mix
+                                should be well-draining, nutrient-rich, and aerated to support healthy root growth.
+                                Adding compost to your soil regularly improves its fertility and introduces beneficial
+                                microbes that help plants absorb nutrients.
+                                <br><br>
+                                If you're gardening in raised beds or repurposed containers, consider using a soil blend
+                                with a mix of peat moss, perlite, and organic matter. For those who want to go the extra
+                                mile, soil testing kits can help determine pH levels and nutrient deficiencies. Urban
+                                environments often expose plants to more pollution, so choosing organic fertilizers like
+                                worm castings or seaweed extract can help maintain a safe, sustainable garden. With the
+                                right soil care techniques, you can ensure that your plants get the nutrients they need
+                                to flourish.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="images/eco-watering-min.webp" alt="Watering can surrounded by plants"
+                                class="box-img">
+                            <p class="text">Eco-Friendly Watering: How to Conserve Water in Your Urban Garden &#8594;
+                            </p>
+                        </div>
+                        <div class="card-back">
+                            <p class="text">Water is a precious resource, especially in urban areas where conservation
+                                is key. Traditional watering methods can be wasteful, but there are plenty of ways to
+                                keep your plants hydrated while minimizing waste. One of the most effective methods is
+                                drip irrigation, which delivers water directly to the roots and reduces evaporation. If
+                                you're growing plants in containers, consider using self-watering pots that retain
+                                moisture for longer periods.
+                                <br><br>
+                                Mulching is another great way to conserve water. Adding a layer of organic mulch (such
+                                as shredded leaves or straw) around your plants helps retain soil moisture and reduces
+                                the need for frequent watering. Collecting rainwater in barrels or small containers can
+                                provide a free and sustainable watering source. Lastly, watering at the right
+                                time, preferably early in the morning or late in the evening, reduces evaporation and
+                                ensures your plants absorb as much moisture as possible. By incorporating these
+                                eco-friendly watering techniques, you can keep your garden lush while being mindful of
+                                water usage.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <img src="images/mental-health-min.webp" alt="Watering can on top of brain model"
+                                class="box-img">
+                            <p class="text">Urban Gardening and Mental Health: The Healing Power of Green Spaces &#8594;
+                            </p>
+                        </div>
+                        <div class="card-back">
+                            <p class="text">
+                                Did you know that gardening isn't just great for growing food—it's also incredibly
+                                beneficial for your mental health? Studies have shown that spending time in green
+                                spaces, even small urban gardens, can reduce stress, improve mood, and boost overall
+                                well-being. The act of planting and nurturing plants provides a sense of accomplishment
+                                and mindfulness, making it an excellent stress-relieving activity.
+                                <br><br>
+                                Urban gardening also fosters a connection with nature, something that's often missing in
+                                fast-paced city life. Whether you're tending to a few potted plants on your balcony or
+                                managing a full rooftop garden, the presence of greenery has been linked to lower levels
+                                of anxiety and depression. Additionally, community gardens offer a way for city dwellers
+                                to interact with neighbors, share gardening knowledge, and create a sense of belonging.
+                                <br><br>
+                                Even if you have limited space, adding a few indoor plants or creating a small herb
+                                garden can have a positive impact on your mood and productivity. So next time you're
+                                feeling overwhelmed, step outside, dig your hands into the soil, and let the healing
+                                power of urban gardening work its magic.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="padding-bottom: 50px;"></p>
+        </div>
+
+        <!-- JS -->
+        <script src="script.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bloom Space</title>
+    <meta name="description"
+      content="Bloom Space urban garden planner with drag-and-drop planner, plant information, and more">
+    <meta name="keywords" content="Bloom, Space, Urban, Garden, Planner, Drag-and-drop, Plant Information">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="navigation.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Icons + PWA -->
+    <link rel="icon" type="images/favicon" href="images/pwa/logo.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/pwa/logo.webp">
+    <link rel="apple-touch-startup-image" href="images/pwa/logo.webp">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&?family=Martel:wght@200;300;400;600;700;800;900&display=swap"
+      rel="stylesheet">
+  </head>
+
+  <body data-page-id="index">
+    <div class="splash-screen" onclick="startIntro()">
+      <h1>Bloom Space</h1>
+      <h2>Create Your Urban Oasis</h2>
+      <h3>Click to get started</h3>
+    </div>
+    <div class="intro-screen" onclick="startIntro()">
+      <div class="stage-one">
+        <h1>We have various tools to help you plan your urban garden, such as:</h1>
+        <ul>
+          <li>A Garden Planner - Plan your urban garden according to your space and preferences using our drag-and-drop
+            grid system to preview a variety of different configurations.</li>
+          <li>A Gardening Handbook - Learn more about urban gardening techniques and practices.</li>
+          <li>A Blog - Read weekly post on urban garden techniques and gardening tips.</li>
+        </ul>
+        <p>Click to continue</p>
+      </div>
+      <div class="stage-two">
+        <h1>Installation</h1>
+        <h2>If your want to install this web application to your device,
+          <span id="mobile-pwa-install">click the share button and click the "Add to Home Screen".</span>
+          <span id="desktop-pwa-install">click the install button in your search bar above.</span>
+        </h2>
+        <p>Click to continue</p>
+      </div>
+    </div>
+    <div class="hamburger-icon" id="icon" onclick="openNav()">
+      <div class="icon-1" id="a"></div>
+      <div class="icon-2" id="b"></div>
+      <div class="icon-3" id="c"></div>
+      <div class="clear"></div>
+    </div>
+    <div id="mySidenav" class="sidenav">
+      <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+      <a href="index.html?visited=true">Garden Planner</a>
+      <a href="gardening-handbook.html">Gardening Handbook</a>
+      <a href="blog.html">Blog</a>
+      <a href="support.html">Support</a>
+    </div>
+
+    <div class="planner-page">
+      <div class="plant-list-container">
+        <h1>Plants</h1>
+        <h2>Scroll to explore more plants!</h2>
+        <ul class="planner-plant-list" id="planner-plant-list"></ul>
+      </div>
+      <div class="garden-grid">
+        <h1>Garden Planner&nbsp;<i class='bx bx-reset' onclick="resetGrid()"></i></h1>
+        <h2 id="drag-start-text">Drag a plant over to get started!</h2>
+
+        <div class="planner-dropdown">
+          <div class="planner-select">
+            <span class="planner-selected">Raised Garden Bed</span>
+            <div class="planner-caret"></div>
+          </div>
+          <ul class="planner-dropdown-content">
+            <li class="planner-dropdown-active">Raised Garden Bed</li>
+            <li>Vertical Planter</li>
+            <li>Balcony Planter</li>
+          </ul>
+        </div>
+
+        <div class="grid-container planner-config">
+          <div class="grid" id="grid">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+          </div>
+        </div>
+        <div class="vertical-planter-img-position planner-config">
+          <img src="images/Vertical Planter.svg" alt="" class="planter-bg">
+          <div class="vertical-planter-container">
+            <div class="vertical-planter" id="vertical-planter">
+              <div class="vertical-planter-item"></div>
+              <div class="vertical-planter-item"></div>
+              <div class="vertical-planter-item"></div>
+              <div class="vertical-planter-item"></div>
+              <div class="vertical-planter-item"></div>
+              <div class="vertical-planter-item"></div>
+              <div class="vertical-planter-item"></div>
+              <div class="vertical-planter-item"></div>
+              <div class="vertical-planter-item"></div>
+              <div class="vertical-planter-item"></div>
+              <div class="vertical-planter-item"></div>
+              <div class="vertical-planter-item"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="balcony-planter-container planner-config">
+          <div class="balcony-planter" id="balcony-planter">
+            <div class="balcony-planter-item"></div>
+            <div class="balcony-planter-item"></div>
+            <div class="balcony-planter-item"></div>
+            <div class="balcony-planter-item"></div>
+            <div class="balcony-planter-item"></div>
+            <div class="balcony-planter-item"></div>
+          </div>
+        </div>
+      </div>
+      <div class="plant-info-container">
+        <h1>Plant Info</h1>
+        <!-- <ul>
+                <li><i class="fa-regular fa-sun"></i></li>
+                <li><i class="fa-solid fa-droplet"></i></li>
+                <li><i class="fa-solid fa-temperature-three-quarters"></i></li>
+            </ul> -->
+        <ul id="plant-info" class="plant-info-list">
+          <li>Click a plant to see more details...</li>
+        </ul>
+      </div>
+      <p style="@media screen and (max-width: 480px) { display: block;} padding-bottom: 50px;"></p>
+    </div>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+    <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        getPlantData();
+        const sidebar = document.querySelector('#planner-plant-list');
+        const grid = document.querySelector('#grid');
+        const verticalPlanter = document.querySelector('#vertical-planter');
+        const balconyPlanter = document.querySelector('#balcony-planter');
+
+        // Make the sidebar draggable
+        Sortable.create(sidebar, {
+          group: {
+            name: 'plants',
+            pull: 'clone', // Allows cloning of the element
+            put: false, // Prevents items from being added back to the sidebar
+          },
+          sort: false, // Disable sorting in the sidebar
+          animation: 150,
+          delay: 40,
+          delayOnTouchOnly: true,
+          ghostClass: 'sortable-ghost',  // Class name for the drop placeholder
+          chosenClass: "sortable-chosen",
+          onClone: (event) => {
+            applyClickListener(event.clone);
+          },
+          onStart: (event) => {
+            const gridItems = document.querySelectorAll('.grid-item');
+            gridItems.forEach(item => {
+              item.classList.add("sortable-no-drag");
+            });
+          },
+          onEnd: (event) => {
+            const gridItems = document.querySelectorAll(".grid-item");
+            gridItems.forEach(item => {
+              item.classList.remove("sortable-no-drag");
+            });
+          }
+        });
+
+        // Make the grid a valid drop target
+        Sortable.create(grid, {
+          group: {
+            name: 'plants',
+            pull: false, // Prevent items from being dragged out of the grid
+            put: true, // Allow items to be dropped into the grid
+          },
+          animation: 150,
+          delay: 40, // time in milliseconds to define when the sorting should start
+          delayOnTouchOnly: true, // only delay if user is using touch
+          ghostClass: 'sortable-ghost-sidebar',
+          dragClass: 'sortable-drag',
+          chosenClass: "sortable-chosen",
+          filter: "sortable-no-drag",
+          swap: true, // Enable swap mode
+          onAdd: (event) => {
+            const clonedPlant = event.item.cloneNode(true); // Clone the dragged item
+            event.item.remove(); // Remove the original dragged item
+
+            // Prevent duplication in the grid by clearing existing items in the grid cell
+            const targetCell = event.target.children[event.newIndex];
+            targetCell.innerHTML = ''; // Clear the target cell
+            targetCell.appendChild(clonedPlant); // Add the cloned item to the cell
+            applyClickListener(clonedPlant);
+            document.querySelector('#drag-start-text').style.display = "none";
+          },
+        });
+
+        // Make the grid a valid drop target
+        Sortable.create(verticalPlanter, {
+          group: {
+            name: 'plants',
+            pull: false, // Prevent items from being dragged out of the grid
+            put: true, // Allow items to be dropped into the grid
+          },
+          animation: 150,
+          delay: 40, // time in milliseconds to define when the sorting should start
+          delayOnTouchOnly: true, // only delay if user is using touch
+          ghostClass: 'sortable-ghost-sidebar',
+          dragClass: 'sortable-drag',
+          chosenClass: "sortable-chosen",
+          filter: "sortable-no-drag",
+          swap: true, // Enable swap mode
+          onAdd: (event) => {
+            const clonedPlant = event.item.cloneNode(true); // Clone the dragged item
+            event.item.remove(); // Remove the original dragged item
+
+            // Prevent duplication in the grid by clearing existing items in the grid cell
+            const targetCell = event.target.children[event.newIndex];
+            targetCell.innerHTML = ''; // Clear the target cell
+            targetCell.appendChild(clonedPlant); // Add the cloned item to the cell
+            applyClickListener(clonedPlant);
+            document.querySelector('#drag-start-text').style.display = "none";
+          },
+        });
+
+        // Make the grid a valid drop target
+        Sortable.create(balconyPlanter, {
+          group: {
+            name: 'plants',
+            pull: false, // Prevent items from being dragged out of the grid
+            put: true, // Allow items to be dropped into the grid
+          },
+          animation: 150,
+          delay: 40, // time in milliseconds to define when the sorting should start
+          delayOnTouchOnly: true, // only delay if user is using touch
+          ghostClass: 'sortable-ghost-sidebar',
+          dragClass: 'sortable-drag',
+          chosenClass: "sortable-chosen",
+          filter: "sortable-no-drag",
+          swap: true, // Enable swap mode
+          onAdd: (event) => {
+            const clonedPlant = event.item.cloneNode(true); // Clone the dragged item
+            event.item.remove(); // Remove the original dragged item
+
+            // Prevent duplication in the grid by clearing existing items in the grid cell
+            const targetCell = event.target.children[event.newIndex];
+            targetCell.innerHTML = ''; // Clear the target cell
+            targetCell.appendChild(clonedPlant); // Add the cloned item to the cell
+            applyClickListener(clonedPlant);
+            document.querySelector('#drag-start-text').style.display = "none";
+          },
+        });
+      });
+    </script>
+    <!-- Intro Screen -->
+    <script>
+      let stage = 0;
+
+      function startIntro() {
+        stage += 1;
+        if (stage === 1) {
+          document.querySelector(".splash-screen").style.opacity = 0;
+          setTimeout(() => {
+            document.querySelector(".splash-screen").style.display = "none";
+          }, 1000);
+          document.querySelector(".stage-one").style.display = "block";
+        }
+
+        if (stage === 2) {
+          document.querySelector(".stage-one").style.opacity = 0;
+          setTimeout(() => {
+            document.querySelector(".stage-one").style.display = "none";
+            document.querySelector(".stage-two").style.display = "block";
+          }, 1000);
+        }
+
+        if (stage === 3) {
+          document.querySelector(".intro-screen").style.opacity = 0;
+          setTimeout(() => {
+            document.querySelector(".intro-screen").style.display = "none";
+          }, 1000);
+          if (window.innerWidth <= 480) {
+            document.body.style.overflowY = "scroll";
+          }
+        }
+      }
+
+      if (window.innerWidth <= 480) {
+        document.body.style.overflowY = "hidden";
+      }
+
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const visited = urlParams.has('visited');
+
+      if (visited) {
+        document.querySelector('.splash-screen').style.display = 'none';
+        document.querySelector('.intro-screen').style.display = 'none';
+        if (window.innerWidth <= 480) {
+          document.body.style.overflowY = "scroll";
+        }
+      }
+    </script>
+    <!-- Dropdown Logic -->
+    <script>
+      const dropdowns = document.querySelectorAll(".planner-dropdown");
+      dropdowns.forEach((dropdown) => {
+        const select = dropdown.querySelector(".planner-select");
+        const caret = dropdown.querySelector(".planner-caret");
+        const menu = dropdown.querySelector(".planner-dropdown-content");
+        const options = dropdown.querySelectorAll(".planner-dropdown-content li");
+        const selected = dropdown.querySelector(".planner-selected");
+
+        select.addEventListener("click", () => {
+          select.classList.toggle("planner-select-clicked");
+          caret.classList.toggle("planner-caret-rotate");
+          menu.classList.toggle("planner-dropdown-content-open");
+        });
+
+        options.forEach((option) => {
+          option.addEventListener("click", () => {
+            selected.innerText = option.innerText;
+            select.classList.remove("planner-select-clicked");
+            caret.classList.remove("planner-caret-rotate");
+            menu.classList.remove("planner-dropdown-content-open");
+            options.forEach((option) => {
+              option.classList.remove("planner-dropdown-active");
+            });
+            option.classList.add("planner-dropdown-active");
+            const plannerConfigs = document.querySelectorAll('.planner-config');
+            plannerConfigs.forEach((config) => {
+              config.style.display = "none";
+            });
+            switch (option.innerText) {
+              case "Raised Garden Bed":
+                plannerConfigs[0].style.display = "block";
+                break;
+              case "Vertical Planter":
+                plannerConfigs[1].style.display = "block";
+                break;
+              case "Balcony Planter":
+                plannerConfigs[2].style.display = "block";
+                break;
+            }
+          });
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const plannerConfigs = document.querySelectorAll('.planner-config');
+        plannerConfigs.forEach((config) => {
+          config.style.display = "none";
+        });
+        plannerConfigs[0].style.display = "block";
+      });
+    </script>
+  </body>
+
+</html>

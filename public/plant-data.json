@@ -1,0 +1,185 @@
+{
+    "plants": [
+      {
+        "name": "Tomatoes",
+        "sunlight": "6-8 hours of full sun daily.",
+        "soil_type": "Well-draining, nutrient-rich (loamy or sandy).",
+        "best_season": "Spring to early summer.",
+        "watering": "Regular, even watering; keep soil moist but not soggy.",
+        "climate": "Warm climates; tolerates mild to hot conditions.",
+        "additional_info": "Stake or cage for support in small spaces. Ideal for containers."
+      },
+      {
+        "name": "Basil",
+        "sunlight": "6-8 hours of full sun.",
+        "soil_type": "Well-draining soil with organic matter.",
+        "best_season": "Late spring to summer.",
+        "watering": "Moderate; water when the topsoil is dry.",
+        "climate": "Warm, humid climates.",
+        "additional_info": "Pinch off flowers to encourage leaf growth."
+      },
+      {
+        "name": "Lettuce",
+        "sunlight": "Partial to full sun (4-6 hours).",
+        "soil_type": "Loose, fertile, well-draining soil.",
+        "best_season": "Spring and fall (cooler months).",
+        "watering": "Regular, shallow watering.",
+        "climate": "Cool climates; bolting occurs in heat.",
+        "additional_info": "Harvest leaves continuously to encourage regrowth."
+      },
+      {
+        "name": "Strawberries",
+        "sunlight": "6+ hours of full sun.",
+        "soil_type": "Well-draining, slightly acidic soil (pH 5.5-6.8).",
+        "best_season": "Spring and early summer.",
+        "watering": "Regular, keep soil moist but not waterlogged.",
+        "climate": "Temperate to cool climates.",
+        "additional_info": "Best in containers or hanging baskets for space efficiency."
+      },
+      {
+        "name": "Spinach",
+        "sunlight": "Partial to full sun (4-6 hours).",
+        "soil_type": "Rich, moist, well-drained soil.",
+        "best_season": "Spring and fall.",
+        "watering": "Moderate; avoid waterlogging.",
+        "climate": "Cool climates; prefers mild temperatures.",
+        "additional_info": "Bolts quickly in heat; grow in cooler weather."
+      },
+      {
+        "name": "Kale",
+        "sunlight": "6 hours of full sun; tolerates partial shade.",
+        "soil_type": "Loamy, well-draining soil.",
+        "best_season": "Late summer to fall.",
+        "watering": "Consistent, moderate watering.",
+        "climate": "Cool climates; frost-tolerant.",
+        "additional_info": "Harvest outer leaves first for continuous growth."
+      },
+      {
+        "name": "Mint",
+        "sunlight": "Partial shade to full sun.",
+        "soil_type": "Moist, well-draining soil.",
+        "best_season": "Spring to fall.",
+        "watering": "Keep soil consistently moist.",
+        "climate": "Temperate to cool climates.",
+        "additional_info": "Grows aggressively; keep in separate containers."
+      },
+      {
+        "name": "Zucchini",
+        "sunlight": "6+ hours of full sun.",
+        "soil_type": "Well-draining, fertile soil.",
+        "best_season": "Spring to summer.",
+        "watering": "Regular, deep watering.",
+        "climate": "Warm to hot climates.",
+        "additional_info": "Needs ample space or trellis support."
+      },
+      {
+        "name": "Cucumbers",
+        "sunlight": "6+ hours of full sun.",
+        "soil_type": "Loamy, fertile, well-draining soil.",
+        "best_season": "Late spring to summer.",
+        "watering": "Consistent watering; avoid letting soil dry out.",
+        "climate": "Warm climates.",
+        "additional_info": "Grows well on trellises to save space."
+      },
+      {
+        "name": "Carrots",
+        "sunlight": "6+ hours of full sun.",
+        "soil_type": "Loose, sandy soil for root growth.",
+        "best_season": "Spring and fall.",
+        "watering": "Keep soil moist but not soggy.",
+        "climate": "Cool climates.",
+        "additional_info": "Avoid rocky soil to prevent deformed roots."
+      },
+      {
+        "name": "Radishes",
+        "sunlight": "4-6 hours of sun; tolerates partial shade.",
+        "soil_type": "Loamy, sandy, well-draining soil.",
+        "best_season": "Spring and fall.",
+        "watering": "Regular, shallow watering.",
+        "climate": "Cool climates.",
+        "additional_info": "Fast-growing (harvest in 3-4 weeks)."
+      },
+      {
+        "name": "Eggplants",
+        "sunlight": "6-8 hours of full sun.",
+        "soil_type": "Well-draining, nutrient-rich soil.",
+        "best_season": "Summer.",
+        "watering": "Moderate; consistent moisture is key.",
+        "climate": "Warm climates.",
+        "additional_info": "Needs staking for support in containers."
+      },
+      {
+        "name": "Chives",
+        "sunlight": "Full sun to partial shade.",
+        "soil_type": "Rich, moist, well-draining soil.",
+        "best_season": "Spring to summer.",
+        "watering": "Moderate; let the soil dry slightly between watering.",
+        "climate": "Cool to warm climates.",
+        "additional_info": "Perennial herb; regrows after cutting."
+      },
+      {
+        "name": "Beets",
+        "sunlight": "6+ hours of full sun.",
+        "soil_type": "Loose, sandy, well-draining soil.",
+        "best_season": "Spring and fall.",
+        "watering": "Moderate; avoid overwatering.",
+        "climate": "Cool climates.",
+        "additional_info": "Both roots and greens are edible."
+      },
+      {
+        "name": "Onions",
+        "sunlight": "6+ hours of full sun.",
+        "soil_type": "Loamy, well-draining soil.",
+        "best_season": "Spring and fall.",
+        "watering": "Regular, consistent moisture.",
+        "climate": "Cool to mild climates.",
+        "additional_info": "Grow in containers for green onions or bulbs."
+      },
+      {
+        "name": "Thyme",
+        "sunlight": "Full sun (6+ hours).",
+        "soil_type": "Well-draining, slightly sandy soil.",
+        "best_season": "Spring to summer.",
+        "watering": "Low; drought-tolerant.",
+        "climate": "Warm to temperate climates.",
+        "additional_info": "Low-maintenance, aromatic herb."
+      },
+      {
+        "name": "Rosemary",
+        "sunlight": "Full sun (6+ hours).",
+        "soil_type": "Sandy, well-draining soil.",
+        "best_season": "Spring to summer.",
+        "watering": "Low; drought-tolerant.",
+        "climate": "Warm, Mediterranean climates.",
+        "additional_info": "Excellent for containers and vertical gardens."
+      },
+      {
+        "name": "Garlic",
+        "sunlight": "6-8 hours of full sun.",
+        "soil_type": "Well-draining, loamy soil.",
+        "best_season": "Plant in fall, harvest in late spring.",
+        "watering": "Moderate, reduce as bulbs mature.",
+        "climate": "Cool climates.",
+        "additional_info": "Easy to grow in containers; great for pest control in gardens."
+      },
+      {
+        "name": "Green Beans",
+        "sunlight": "6-8 hours of full sun.",
+        "soil_type": "Well-draining, slightly acidic soil.",
+        "best_season": "Late spring to summer.",
+        "watering": "Moderate; avoid letting soil dry out.",
+        "climate": "Warm climates.",
+        "additional_info": "Trellis or pole support is recommended."
+      },
+      {
+        "name": "Chili Peppers",
+        "sunlight": "6-8 hours of full sun.",
+        "soil_type": "Well-draining, nutrient-rich soil.",
+        "best_season": "Late spring to summer.",
+        "watering": "Moderate, avoid letting soil dry out.",
+        "climate": "Warm climates.",
+        "additional_info": "Requires staking in containers for support."
+      }
+    ]
+  }
+  

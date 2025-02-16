@@ -1,0 +1,1176 @@
+:root {
+    --gridSpacing: 80px;
+    --gridItemFontSize: 0.8em;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: 'green_houseregular';
+    src: url('fonts/green_house-webfont.woff2') format('woff2'),
+        url('fonts/green_house-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+    background-color: #2f6d26;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+}
+
+/** INTRO SCREEN START */
+.splash-screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0.1)), url("images/home-bg-min.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    user-select: none;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    transition: all .75s;
+}
+
+.splash-screen h1,
+.splash-screen h2 {
+    text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000;
+    font-family: "green_houseregular";
+    font-weight: 100;
+}
+
+.splash-screen h1 {
+    font-size: 6em;
+    margin: 30vh auto 0.5rem;
+}
+
+.splash-screen h2 {
+    font-size: 2.75em;
+    margin-bottom: 1rem;
+}
+
+.splash-screen h3 {
+    text-shadow: 0 0 10px #000, 0 0 20px #000, 0 0 30px #000;
+}
+
+.intro-screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    user-select: none;
+    cursor: pointer;
+    opacity: 1;
+    transition: all 1s;
+}
+
+.intro-screen h1 {
+    font-size: 2.5em;
+    margin-bottom: 1rem;
+}
+
+.splash-screen h3,
+.intro-screen p {
+    font-size: 1.3em;
+    font-weight: 700;
+    animation: continuePulse 3s 3s infinite linear;
+    opacity: 1;
+    transition: all .3s;
+}
+
+@keyframes continuePulse {
+    0% {
+        opacity: 1;
+        font-size: 1.3em;
+    }
+
+    50% {
+        opacity: 0.75;
+        font-size: 1.15em;
+    }
+
+    100% {
+        opacity: 1;
+        font-size: 1.3em;
+    }
+}
+
+.stage-one,
+.stage-two {
+    width: 70%;
+    text-align: center;
+    opacity: 1;
+    transition: all 1s;
+}
+
+.stage-one,
+.stage-two {
+    display: none;
+}
+
+.stage-one ul {
+    list-style: introFeatures;
+    padding: 0;
+    margin: auto;
+    text-align: start;
+    font-size: 1.35em;
+    margin-bottom: 1em;
+    list-style-position: inside;
+}
+
+.stage-one li::marker {
+    font-size: 1.5em;
+    text-align: left;
+}
+
+.stage-one li {
+    margin-bottom: 0.35em;
+}
+
+@counter-style introFeatures {
+    system: cyclic;
+    symbols: "📝" "📕" "📰";
+    suffix: ' ';
+}
+
+.stage-two h2 {
+    font-size: 1.25em;
+    font-weight: 500;
+    margin-bottom: 1em;
+}
+
+#mobile-pwa-install {
+    display: none;
+}
+
+#desktop-pwa-install {
+    display: inline-block;
+}
+
+@media screen and (max-width: 768px) {    
+    .intro-screen h1 {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+    }
+
+    .intro-screen p {
+        font-size: 1em;
+    }
+
+    .stage-one,
+    .stage-two {
+        width: 90%;
+    }
+
+    .stage-one ul {
+        width: 80%;
+        font-size: 1em;
+    }
+
+    .stage-one li {
+        margin-bottom: 1.65em;
+        line-height: 1.25em;
+    }
+
+    #mobile-pwa-install {
+        display: inline-block;
+    }
+
+    #desktop-pwa-install {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .splash-screen {
+        background-position-x: 75%;
+    }
+
+    .splash-screen h1 {
+        font-size: 4em;
+    }
+
+    .splash-screen h2 {
+        font-size: 1.75em;
+    }
+}
+
+/** INTRO SCREEN END */
+
+/** GARDEN PLANNER START */
+.planner-page {
+    width: 98%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: auto;
+}
+
+.planner-page>div>h1 {
+    font-weight: 700;
+    color: white;
+    font-size: 2em;
+    height: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.planner-page>div>h1>i {
+    cursor: pointer;
+    transition: color .2s ease-in-out;
+}
+
+.planner-page>div>h1>i:hover {
+    color: crimson;
+}
+
+.plant-list-container,
+.plant-info-container {
+    width: 25%;
+    height: 100%;
+}
+
+.garden-grid {
+    width: 50%;
+    height: 100%;
+}
+
+.plant-list-container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.planner-plant-list {
+    list-style: none;
+    color: #fff;
+    display: flex;
+    width: 100%;
+    height: auto;
+    /* height: 90%; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    margin: auto;
+    position: relative;
+}
+
+/* scrollbar */
+.planner-plant-list::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #556D4F;
+    border-radius: 5px;
+}
+
+.planner-plant-list::-webkit-scrollbar {
+    width: 7.5px;
+    background-color: #264b1d;
+    height: .5em;
+    border-radius: 5px;
+}
+
+.planner-plant-list::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #4abd38;
+}
+
+.planner-plant-list::-webkit-scrollbar-thumb:hover {
+    background-color: #42aa32;
+}
+
+.planner-plant-list li {
+    cursor: pointer;
+    width: 35%;
+    height: auto;
+    padding: 0.5em;
+    border-radius: 10px;
+    /* background: rgba(0, 0, 0, 0.4); */
+    /* border: 1px #39922c solid; */
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+    margin: 5px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.planner-plant-list li:nth-child(19),
+.planner-plant-list li:nth-child(20) {
+    margin-bottom: 10px;
+}
+
+.planner-plant-list li img {
+    width: 3em;
+    height: 3em;
+}
+
+.plant-list-container h2,
+.garden-grid h2 {
+    color: #fff;
+    font-size: 1.15em;
+    font-weight: 500;
+}
+
+.planner-dropdown {
+    min-width: 15em;
+    width: 65%;
+    position: relative;
+    margin: 2em auto 1.5em;
+}
+
+.planner-select {
+    /* background: #2a2f3b; */
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px #2a2f3b solid; */
+    border: 2px #39922c solid;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.planner-select-clicked {
+    /* border: 2px #26489a solid; */
+    /* box-shadow: 0 0 0.8em #26489a; */
+    box-shadow: 0 0 0.8em #39922c;
+}
+
+.planner-select:hover {
+    /* background: #323741; */
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.planner-caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: 0.3s;
+}
+
+.planner-caret-rotate {
+    transform: rotate(180deg);
+}
+
+.planner-dropdown-content {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    margin: 16px 0;
+    /* background: #323741; */
+    background-color: #24531c;
+    /* border: 1px #363a43 solid; */
+    border: 1px #39922c solid;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    /* color: #9fa5b5; */
+    color: #ddd;
+    position: absolute;
+    top: 3.25em;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    /* opacity: 0; */
+    transition: 0.2s;
+    z-index: 1;
+    /* max-height: 50vh; */
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden auto;
+}
+
+.planner-dropdown-content li {
+    padding: 0.7em 0.5em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.planner-dropdown-active {
+    background: #153111;
+}
+
+.planner-dropdown-content-open {
+    max-height: 50vh;
+    visibility: visible;
+}
+
+.grid-container {
+    width: fit-content;
+    height: fit-content;
+    margin: 5% auto;
+    position: relative;
+    overflow: hidden;
+    border: 7px solid #B39E6A;
+    background-color: #836539;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, var(--gridSpacing));
+    grid-template-rows: repeat(4, var(--gridSpacing));
+    gap: 10px;
+    margin: auto;
+    width: fit-content;
+    height: calc((4 * var(--gridSpacing)) + 30px);
+    overflow: hidden;
+    /* background-color: #2f6d26; */
+    /* background-color: #836539; */
+    /* background-color: #B39E6A; */
+    margin: 10px;
+}
+
+.grid-item {
+    width: var(--gridSpacing);
+    height: var(--gridSpacing);
+    /* background: rgba(0, 0, 0, 0.4); */
+    /* border: 1px #39922c solid; */
+    background-color: #836539;
+    border: 2px solid #B39E6A;
+    /* background-color: #39922c; */
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid li,
+.vertical-planter li,
+.balcony-planter li {
+    cursor: grab;
+    width: 45%;
+    height: auto;
+    padding: 0.5em;
+    border-radius: 10px;
+    color: #fff;
+    font-size: var(--gridItemFontSize);
+    /* background: rgba(0, 0, 0, 0.4); */
+    /* border: 1px #39922c solid; */
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+    margin: 5px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid li img,
+.vertical-planter li img,
+.balcony-planter li img {
+    width: 3em;
+    height: 3em;
+}
+
+.vertical-planter-container {
+    width: fit-content;
+    height: fit-content;
+    margin: 10% auto;
+    position: relative;
+    overflow: hidden;
+    /* border: 7px solid #333; */
+    /* background-color: #836539; */
+}
+
+.vertical-planter-img-position {
+    width: fit-content;
+    height: fit-content;
+    overflow: visible;
+    position: relative;
+    margin: auto;
+}
+
+.vertical-planter {
+    display: grid;
+    grid-template-columns: repeat(3, var(--gridSpacing));
+    grid-template-rows: repeat(4, var(--gridSpacing));
+    gap: 10px;
+    margin: auto;
+    width: fit-content;
+    height: calc((4 * var(--gridSpacing)) + 30px);
+    overflow: hidden;
+    /* background-color: #2f6d26; */
+    /* background-color: #836539; */
+    /* background-color: #B39E6A; */
+    /* margin: 10px; */
+}
+
+.planter-bg {
+    width: calc((3 * var(--gridSpacing)) + 120px);
+    height: calc((4 * var(--gridSpacing)) + 120px);
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    z-index: -1;
+}
+
+.vertical-planter-item {
+    width: var(--gridSpacing);
+    height: var(--gridSpacing);
+    /* background: rgba(0, 0, 0, 0.4); */
+    /* border: 1px #39922c solid; */
+    background-color: #836539;
+    border: 2px solid #B39E6A;
+    /* background-color: #39922c; */
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.balcony-planter-container {
+    width: fit-content;
+    height: fit-content;
+    margin: 10% auto;
+    position: relative;
+    overflow: hidden;
+    border: 7px solid #333;
+    border-radius: 5%;
+    background-color: #836539;
+}
+
+.balcony-planter {
+    display: grid;
+    grid-template-columns: repeat(3, var(--gridSpacing));
+    grid-template-rows: repeat(2, var(--gridSpacing));
+    gap: 10px;
+    margin: auto;
+    width: fit-content;
+    height: calc((2 * var(--gridSpacing)) + 10px);
+    overflow: hidden;
+    /* background-color: #2f6d26; */
+    /* background-color: #836539; */
+    /* background-color: #B39E6A; */
+    margin: 10px;
+}
+
+.balcony-planter-item {
+    width: var(--gridSpacing);
+    height: var(--gridSpacing);
+    /* background: rgba(0, 0, 0, 0.4); */
+    /* border: 1px #39922c solid; */
+    background-color: #836539;
+    border: 2px solid #B39E6A;
+    /* background-color: #39922c; */
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plant-info-list {
+    height: 90%;
+    padding: 0.5em;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px #39922c solid;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 2.5vh auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plant-info-list h2 {
+    text-align: center;
+    color: #fff;
+}
+
+.plant-info-list div {
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    text-align: left;
+    margin: auto;
+    width: 95%;
+}
+
+.plant-info-list div img {
+    width: 2em;
+    height: 2em;
+    align-self: center;
+    margin-right: 5px;
+}
+
+.plant-info-list p {
+    align-self: center;
+    width: auto;
+}
+
+.plant-info-list li {
+    color: #fff;
+    text-align: center;
+    list-style: none;
+    font-size: 1.15em;
+}
+
+.plant-info-container .fa-sun {
+    color: #ffd700;
+}
+
+.plant-info-container .fa-droplet {
+    color: #005a9c;
+}
+
+.plant-info-container .fa-temperature-three-quarters {
+    color: red;
+}
+
+@media screen and (min-width: 1024px) {
+    :root {
+        --gridSpacing: 100px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    :root {
+        --gridItemFontSize: 0.7em;
+    }
+
+    .planner-plant-list li {
+        font-size: 0.9em;
+        width: 48%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --gridSpacing: 70px;
+    }
+
+    .planner-page>div>h1 {
+        font-size: 1.5em;
+    }
+
+    .planner-plant-list li {
+        font-size: .8em;
+    }
+
+    .planner-plant-list li:nth-child(19) {
+        margin-bottom: 0;
+    }
+
+    .plant-info-list h2 {
+        font-size: 1.25em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --gridSpacing: 70px;
+        --gridItemFontSize: 0.6em;
+    }
+
+    body {
+        overflow-y: scroll;
+    }
+
+    .planner-page {
+        flex-direction: column;
+        width: 90%;
+        margin-top: 3vh;
+    }
+
+    .plant-list-container,
+    .plant-info-container {
+        width: 100%;
+    }
+
+    .plant-list-container {
+        overflow: unset;
+    }
+
+    .planner-dropdown {
+        width: 85%;
+    }
+
+    .garden-grid {
+        width: 100%;
+    }
+
+    .planner-page>div>h1 {
+        height: auto;
+        margin-bottom: 2%;
+    }
+
+    .planner-plant-list {
+        flex-direction: column;
+        gap: 0 10px;
+        height: 180px;
+        width: 90vw;
+    }
+
+    .planner-plant-list li {
+        width: 80px;
+        height: 80px;
+        font-size: 0.7em;
+    }
+
+    .planner-plant-list li:nth-child(19),
+    .planner-plant-list li:nth-child(20) {
+        margin-bottom: 5px;
+    }
+
+    .plant-info-list {
+        margin-top: 0;
+    }
+
+    .plant-info-container>h1 {
+        margin-top: 5%;
+    }
+
+    .plant-info-container {
+        padding-bottom: 7vh;
+    }
+
+    .plant-info-list div {
+        margin: 1.5em auto;
+    }
+}
+
+/** GARDEN PLANNER END  */
+
+/** GARDENING HANDBOOK START */
+
+.handbook-page {
+    width: 98%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    /* text-align: center; */
+    margin: auto;
+}
+
+.handbook-content {
+    width: calc(95% - 250px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    margin: auto;
+    overflow-y: scroll;
+    color: #fff;
+}
+
+.handbook-content::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.handbook-title-laptop,
+.handbook-title-mobile {
+    text-align: center;
+    font-size: 3em;
+    color: white;
+}
+
+.handbook-title-laptop {
+    display: block;
+}
+
+.handbook-title-mobile {
+    display: none;
+}
+
+.handbook-content div {
+    margin-bottom: 5em;
+}
+
+.handbook-content div>h1 {
+    margin-bottom: .75em;
+}
+
+.handbook-content div h2 {
+    margin-bottom: .125em;
+}
+
+.handbook-content div p {
+    margin-bottom: 1.25em;
+    line-height: 1.5em;
+    font-family: "Martel", serif;
+    font-size: 1.15em;
+}
+
+@media screen and (max-width: 480px) {
+    .handbook-title-laptop {
+        display: none;
+    }
+
+    .handbook-title-mobile {
+        display: block;
+    }
+}
+
+/** GARDENING HANDBOOK END */
+
+/** BLOG START */
+.blog-page {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.blog-page h1 {
+    text-align: center;
+    font-size: 3em;
+    color: #fff;
+}
+
+.blog-page h2 {
+    text-align: center;
+    font-size: 1.75em;
+    color: #fff;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+/* scrollbar */
+.blog-page::-webkit-scrollbar-track,
+.card-back::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #556D4F;
+    border-radius: 5px;
+}
+
+.blog-page::-webkit-scrollbar,
+.card-back::-webkit-scrollbar {
+    width: 7.5px;
+    background-color: #264b1d;
+    height: .5em;
+    border-radius: 5px;
+}
+
+.blog-page::-webkit-scrollbar-thumb,
+.card-back::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #4abd38;
+}
+
+.blog-page::-webkit-scrollbar-thumb:hover,
+.card-back::-webkit-scrollbar-thumb:hover {
+    background-color: #42aa32;
+}
+
+.card-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1%;
+    overflow: hidden;
+}
+
+.card {
+    width: 42.5%;
+    padding: 3% 1%;
+    border-radius: 1em;
+    overflow: visible;
+    /* background-color: #B5CAAE; */
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+    border-radius: 1em;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.card-front {
+    position: relative;
+    color: #fff;
+    padding: 2%;
+}
+
+.card-front img {
+    width: 100%;
+    border-radius: calc(1em - 2%);
+}
+
+.card-back {
+    position: absolute;
+    color: #fff;
+    overflow-y: auto;
+    transform: rotateY(180deg);
+    top: 0%;
+    padding: 2%;
+}
+
+.card-front p {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.15em;
+    line-height: 1.5em;
+}
+
+.card-back p {
+    font-family: "Martel", serif;
+    font-size: 1.25em;
+    line-height: 1.5em;
+    text-align: left;
+    padding: 1%;
+}
+
+@media screen and (max-width: 480px) {
+    .blog-page {
+        overflow-y: visible;
+    }
+    .card-container {
+        flex-direction: column;
+        padding: 0 1%;
+        width: 85%;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+/** BLOG PAGE END */
+
+/** SUPPORT PAGE START */
+body[data-page-id = "support"] {
+    overflow-y: auto;
+}
+
+.support-page h1 {
+    font-size: 3em;
+    text-align: center;
+    color: #fff;
+}
+
+.support-page h2 {
+    font-size: 1.75em;
+    text-align: center;
+    color: #fff;
+    width: 80%;
+    margin: 1rem auto 10vh;
+}
+
+.accordion {
+    margin: auto;
+    width: 80%;
+}
+
+.accordion li {
+    list-style: none;
+    width: 100%;
+    margin: 40px 0;
+    padding: 10px;
+    border-radius: 0.5em;
+    /* background: #e3edf7; */
+    background: transparent;
+    /* border-bottom: 3px solid #fff; */
+    color: #fff;
+    box-shadow: 0 0 0.6em rgba(255, 255, 255, 0.35);
+}
+
+/* .accordion :first-child {
+    border-top: 3px solid #fff;
+} */
+
+.accordion li label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.accordion li label::before {
+    content: "+";
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.accordion input[type="checkbox"] {
+    display: none;
+}
+
+.accordion .accordion-content {
+    color: #fff;
+    padding: 0 10px;
+    line-height: 26px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s, padding 0.5s;
+    font-family: "Martel", serif;
+    font-size: 1.15em;
+}
+
+.accordion input[type="checkbox"]:checked+label+.accordion-content {
+    max-height: 400px;
+    padding: 10px 10px 20px;
+}
+
+.accordion input[type="checkbox"]:checked+label::before {
+    content: "-";
+}
+
+.contact-form {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.contact-form label {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1.105em;
+    display: block;
+    font-family: "Poppins", sans-serif;
+}
+
+.contact-form input {
+    color: #fff;
+    background-color: #0000;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    min-height: 72px;
+    margin-bottom: 0;
+    padding: 16px 24px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.25em;
+    width: 100%;
+}
+
+.contact-form input::placeholder {
+    color: #fff;
+}
+
+.contact-form input[type="submit"] {
+    /* background-color: #fff; */
+    /* color: #0f220c; */
+    cursor: pointer;
+    /* border: none; */
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-form input[type="submit"]:hover {
+    background-color: #fff;
+    color: #2f6d26;
+    border: none;
+}
+
+.contact-form textarea {
+    color: #fff;
+    background-color: #0000;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 150px;
+    max-height: 200px;
+    padding: 22px 24px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.25em;
+    resize: vertical;
+}
+
+.contact-form textarea::placeholder {
+    color: #fff;
+}
+
+.contact-form-grid {
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    align-items: center;
+    display: grid;
+    margin-top: 20px;
+}
+
+.contact-message,
+.contact-submit {
+    grid-area: span 1 / span 2 / span 1 / span 2;
+}
+
+@media screen and (max-width: 480px) {  
+    .contact-form label {
+        font-size: 1.5em;
+        margin-bottom: 5px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1.15rem;
+    }
+
+    .contact-form-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact-form-grid>div {
+        width: 100%;
+    }
+
+    .contact-message,
+    .contact-submit {
+        width: 100%;
+    }
+
+    .contact-submit {
+        margin-bottom: 25px;
+    }
+}
+
+/** SUPPORT PAGE END */

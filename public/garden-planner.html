@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Garden Planner | Bloom Space</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="styles.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="planner-page">
+            <div class="plant-list-container">
+                <h1>Plants</h1>
+                <ul class="planner-plant-list" id="planner-plant-list"></ul>
+            </div>
+            <div class="garden-grid">
+                <span>
+                    <h1><i class='bx bx-log-out' onclick="window.location.href = 'index.html'"></i>&nbsp;Garden Planner
+                    </h1>
+                    <div class="grid">
+                        <div class="grid-item" data-grid-id="1"></div>
+                        <div class="grid-item" data-grid-id="2"></div>
+                        <div class="grid-item" data-grid-id="3"></div>
+                        <div class="grid-item" data-grid-id="4"></div>
+                        <!-- Add more grid items as needed -->
+                    </div>
+                </span>
+            </div>
+            <div class="plant-info-container">
+                <h1>Plant Info</h1>
+                <!-- <ul>
+                    <li><i class="fa-regular fa-sun"></i></li>
+                    <li><i class="fa-solid fa-droplet"></i></li>
+                    <li><i class="fa-solid fa-temperature-three-quarters"></i></li>
+                </ul> -->
+                <ul id="plant-info" class="plant-info-list"></ul>
+            </div>
+        </div>
+
+        <!-- JS -->
+        <script src="script.js"></script>
+        <!-- Entire bundle -->
+        <script type="module">
+            import {
+                Draggable,
+                Sortable,
+                Droppable,
+                Swappable,
+            } from 'https://cdn.jsdelivr.net/npm/@shopify/draggable/build/esm/index.mjs';
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                getPlantData(); // Call the function when the page loads
+            });
+
+            // document.addEventListener("DOMContentLoaded", () => {
+            //     const sidebar = document.querySelector('#planner-plant-list');
+            //     const grid = document.querySelector('.grid');
+
+            //     // Initialize draggable
+            //     const draggable = new Draggable.Draggable(sidebar, {
+            //         draggable: '.plant-drag-drop',
+            //         mirror: {
+            //             constrainDimensions: true,
+            //         },
+            //     });
+
+            //     // Handle dragging to the grid
+            //     draggable.on('drag:stop', (event) => {
+            //         const draggedPlant = event.source;
+            //         const clonedPlant = draggedPlant.cloneNode(true);
+
+            //         const target = document.elementFromPoint(
+            //             event.sensorEvent.clientX,
+            //             event.sensorEvent.clientY
+            //         );
+
+            //         if (target && target.classList.contains('grid-item') && !target.hasChildNodes()) {
+            //             target.appendChild(clonedPlant);
+            //         }
+            //     });
+            // });
+
+        </script>
+        <script src="https://kit.fontawesome.com/3258a754e3.js" crossorigin="anonymous"></script>
+    </body>
+
+</html>
