@@ -1,22 +1,23 @@
 
 # Bloom Space
 
-A brief description of what this project does and who it's for
-
-
+Welcome to Bloom Space, a program to help you transform your rooftop to an urban oasis! This program helps you to plan your urban garden and teaches you more sustainable pratices and efficient techniques to help the environment.
 ## Features
 
-- Garden Planner
+- Drag-and-Drop Garden Planner
 - Plant Information
 - Garden Handbook
 - Blog
 - Support
-## Deployed Software
+
+
+## Deployment
+
+To run this project, visit:
 
 https://bloom-space07.web.app
 
-
-![Logo](https://bloom-space07.web.app/images/pwa/192.png)
+and install on your device
 ## Screenshots
 
 ![App Screenshot](https://bloom-space07.web.app/images/pwa/512.png)
@@ -24,4 +25,4 @@ https://bloom-space07.web.app
 
 ## Tech Stack
 
-**Client:** HTML, CSS, Javascript
+**Client:** HTML, CSS, JavaScript
