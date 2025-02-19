@@ -8,6 +8,7 @@
     <meta name="description"
       content="Bloom Space urban garden planner with drag-and-drop planner, plant information, and more">
     <meta name="keywords" content="Bloom, Space, Urban, Garden, Planner, Drag-and-drop, Plant Information">
+    <meta name="google-site-verification" content="qRt_AsOG2wMeqz2JTC7wjwUlXPgmPD23dpLPSjMg7bg" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
@@ -15,9 +16,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <!-- Icons + PWA -->
-    <link rel="icon" type="images/favicon" href="images/pwa/logo.webp">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/pwa/logo.webp">
-    <link rel="apple-touch-startup-image" href="images/pwa/logo.webp">
+    <link rel="icon" type="images/favicon" href="images/pwa/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/pwa/logo.png">
+    <link rel="apple-touch-startup-image" href="images/pwa/logo.png">
     <link rel="manifest" href="manifest.json">
 
     <!-- FONTS -->
@@ -54,6 +55,36 @@
         <p>Click to continue</p>
       </div>
     </div>
+    <div class="quiz-popup-container">
+      <div class="quiz-popup">
+        <i class='bx bx-x quiz-popup-close-btn' onclick="closePopup()"></i>
+        <form class="quiz">
+          <h2>Quiz</h2>
+          <h3>Take this quiz to find out which plants are best for your area!</h3>
+          <div class="progress-bar">
+            <div class="progress-bar-background">
+              <div class="progress-bar-foreground" style="width: 0%;">
+              </div>
+            </div>
+          </div>
+          <div class="quiz-content">
+            <p id="questionTxt">What climate does your area have?</p>
+            <div class="quizOptionsBox">
+              <label name="quizLbl" class="quizLbl"><input type="radio" value="opt1" id="opt1" name="solarQuiz"><span
+                  class="quizRadio"></span>
+                <span class="quizLblTxt">Dry</span></label>
+
+              <label name="quizLbl" class="quizLbl"><input type="radio" value="opt2" id="opt2" name="solarQuiz"><span
+                  class="quizRadio"></span>
+                <span class="quizLblTxt">Temperate</span></label>
+            </div>
+
+            <p id="quizTxt"></p>
+            <button onclick="quiz()" type="button" class="quizBtn">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="hamburger-icon" id="icon" onclick="openNav()">
       <div class="icon-1" id="a"></div>
       <div class="icon-2" id="b"></div>
@@ -77,6 +108,7 @@
       <div class="garden-grid">
         <h1>Garden Planner&nbsp;<i class='bx bx-reset' onclick="resetGrid()"></i></h1>
         <h2 id="drag-start-text">Drag a plant over to get started!</h2>
+        <h3 onclick="openPopup()">Not sure where to start? <span>Click here</span> to get started!</h3>
 
         <div class="planner-dropdown">
           <div class="planner-select">
@@ -143,11 +175,7 @@
       </div>
       <div class="plant-info-container">
         <h1>Plant Info</h1>
-        <!-- <ul>
-                <li><i class="fa-regular fa-sun"></i></li>
-                <li><i class="fa-solid fa-droplet"></i></li>
-                <li><i class="fa-solid fa-temperature-three-quarters"></i></li>
-            </ul> -->
+        <!-- JS Insert Plant Info Here -->
         <ul id="plant-info" class="plant-info-list">
           <li>Click a plant to see more details...</li>
         </ul>

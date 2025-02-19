@@ -1,0 +1,124 @@
+{
+  "plants": [
+    {
+      "name": "Tomatoes",
+      "climate": "Dry",
+      "sunlight": "Sunny",
+      "season": "Summer"
+    },
+    {
+      "name": "Basil",
+      "climate": "Temperate",
+      "sunlight": "Sunny",
+      "season": "Summer"
+    },
+    {
+      "name": "Lettuce",
+      "climate": "Temperate",
+      "sunlight": "Partial Sun",
+      "season": "Spring/Fall"
+    },
+    {
+      "name": "Strawberries",
+      "climate": "Temperate",
+      "sunlight": "Sunny",
+      "season": "Summer"
+    },
+    {
+      "name": "Spinach",
+      "climate": "Temperate",
+      "sunlight": "Partial Sun",
+      "season": "Spring/Fall"
+    },
+    {
+      "name": "Kale",
+      "climate": "Temperate",
+      "sunlight": "Partial Sun",
+      "season": "Spring/Fall"
+    },
+    {
+      "name": "Mint",
+      "climate": "Dry",
+      "sunlight": "Partial Sun",
+      "season": "Summer"
+    },
+    {
+      "name": "Zucchini",
+      "climate": "Dry",
+      "sunlight": "Sunny",
+      "season": "Summer"
+    },
+    {
+      "name": "Cucumbers",
+      "climate": "Dry",
+      "sunlight": "Sunny",
+      "season": "Summer"
+    },
+    {
+      "name": "Carrots",
+      "climate": "Dry",
+      "sunlight": "Sunny",
+      "season": "Spring/Fall"
+    },
+    {
+      "name": "Radishes",
+      "climate": "Temperate",
+      "sunlight": "Partial Sun",
+      "season": "Spring/Fall"
+    },
+    {
+      "name": "Eggplants",
+      "climate": "Dry",
+      "sunlight": "Sunny",
+      "season": "Summer"
+    },
+    {
+      "name": "Chives",
+      "climate": "Temperate",
+      "sunlight": "Partial Sun",
+      "season": "Summer"
+    },
+    {
+      "name": "Beets",
+      "climate": "Temperate",
+      "sunlight": "Sunny",
+      "season": "Spring/Fall"
+    },
+    {
+      "name": "Onions",
+      "climate": "Temperate",
+      "sunlight": "Sunny",
+      "season": "Spring/Fall"
+    },
+    {
+      "name": "Thyme",
+      "climate": "Dry",
+      "sunlight": "Partial Sun",
+      "season": "Spring/Fall"
+    },
+    {
+      "name": "Rosemary",
+      "climate": "Dry",
+      "sunlight": "Sunny",
+      "season": "Summer"
+    },
+    {
+      "name": "Garlic",
+      "climate": "Temperate",
+      "sunlight": "Sunny",
+      "season": "Spring/Fall"
+    },
+    {
+      "name": "Green Beans",
+      "climate": "Dry",
+      "sunlight": "Sunny",
+      "season": "Summer"
+    },
+    {
+      "name": "Chili Peppers",
+      "climate": "Dry",
+      "sunlight": "Sunny",
+      "season": "Summer"
+    }
+  ]
+}

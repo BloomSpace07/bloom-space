@@ -124,3 +124,145 @@ function displayHandbookContent() {
         })
         .catch(error => console.error('Error loading the JSON data:', error));
 }
+
+function openPopup() {
+    const popupContainer = document.querySelector('.quiz-popup-container');
+    const popup = document.querySelector('.quiz-popup');
+    popupContainer.classList.add('quiz-popup-open');
+    document.body.offsetHeight;
+    popup.style.opacity = 1;
+    popupContainer.style.opacity = 1;
+    document.querySelector('body').style.overflowY = "hidden";
+}
+
+function closePopup() {
+    const popupContainer = document.querySelector('.quiz-popup-container');
+    const popup = document.querySelector('.quiz-popup');
+    popup.style.opacity = 0;
+    popupContainer.style.opacity = 0;
+    setTimeout(() => {
+        popupContainer.classList.remove('quiz-popup-open');
+    }, 500);
+    document.querySelector('body').style.overflowY = "scroll";
+}
+
+function progressBar() {
+    const bar = document.getElementsByClassName("progress-bar-foreground")[0];
+    const width = parseFloat(bar.style.width);
+    let nextWidth = width;
+    let id = setInterval(frame, 33.333);
+    function frame() {
+        if (nextWidth >= width + 33.333) {
+            clearInterval(id);
+        }
+        else {
+            nextWidth++;
+            bar.style.width = nextWidth + '%';
+        }
+    }
+}
+
+const questionChoices = [
+    ["Dry", "Temperate"],
+    ["Partial Sun", "Sunny"],
+    ["Spring/Fall", "Summer"]
+];
+
+const questions = ["What climate does your area have?",
+    "How much sunlight does your area receive?",
+    "What season do you want to harvest your plants by?"
+];
+let question = 1;
+let score = 0;
+let clear = false;
+let plantCriteria = [];
+async function quiz() {
+    const form = document.getElementsByClassName("quiz")[0];
+    const btn = document.getElementsByClassName("quizBtn")[0];
+    const txt = document.getElementById("quizTxt");
+    let options = form.querySelectorAll('input[name="solarQuiz"]');
+    let labels = form.getElementsByClassName("quizLbl");
+    let labelsTxt = document.getElementsByClassName("quizLblTxt");
+    let questionTxt = document.getElementById("questionTxt");
+    if (clear == false) {
+        let selectedOption, selectedLabel;
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                selectedOption = i;
+                selectedLabel = labels[i];
+                break;
+            }
+        }
+        plantCriteria.push(selectedOption);
+        btn.innerText = "Next";
+        clear = true;
+
+        if (question == 3) {
+            progressBar();
+            btn.innerText = "Submit";
+            btn.disabled = true;
+            btn.className += " btnDisabled";
+            for (let i = 0; i < plantCriteria.length; i++) {
+                plantCriteria[i] = questionChoices[i][plantCriteria[i]];
+            }
+            const matchedPlants = await findPlants(plantCriteria);
+            console.log(matchedPlants);
+            console.log(plantCriteria);
+            showQuizAnswers(matchedPlants);
+            return 0;
+        }
+
+        question++;
+    }
+
+
+    else {
+        btn.innerText = "Submit";
+        txt.innerText = "";
+        questionTxt.innerText = questions[question - 1];
+        for (let i = 0; i < labels.length; i++) {
+            labels[i].className = "quizLbl";
+            options[i].checked = false;
+            labelsTxt[i].textContent = questionChoices[question - 1][i];
+        }
+        progressBar();
+        clear = false;
+    }
+}
+
+function findPlants(criteria) {
+    return fetch('plant-quiz-data.json')
+        .then(response => response.json()) // Parse the JSON file
+        .then(data => {
+            const plants = data.plants;
+            const matchingPlants = plants.filter(plant => plant.climate === criteria[0] && plant.sunlight === criteria[1] && plant.season === criteria[2]);
+            return matchingPlants;
+        })
+        .catch(error => console.error('Error loading the JSON data:', error));
+}
+
+function showQuizAnswers(matchedPlants) {
+    fetch('plant-data.json')
+        .then(response => response.json()) // Parse the JSON file
+        .then(data => {
+            const infoContainer = document.querySelector('.quiz-content');
+            infoContainer.innerHTML = "<h3>Here are the best plant(s) for you based on your area!</h3>";
+            for (let i = 0; i < matchedPlants.length; i++) {
+                const plantName = matchedPlants[i].name;
+                const plant = data.plants.find(p => p.name === plantName);
+                const plantFileName = plant.name.replace(" ", "-").toLowerCase();
+                const infoBox = document.createElement('div');
+                infoBox.innerHTML = `<img src="images/icons/plants/${plantFileName}.png" alt="">${plant.name}`;
+                infoBox.classList.add('quiz-plant-results');
+                infoContainer.appendChild(infoBox);
+            }
+            infoContainer.classList.add('quiz-plant-results-open');
+            infoContainer.querySelectorAll('.quiz-plant-results').forEach(plant => {
+                plant.addEventListener('click', () => {
+                    closePopup();
+                    displayPlantInfo(plant.textContent.trim());
+                });
+            });
+        })
+        .catch(error => console.error('Error loading the JSON data:', error));
+}
