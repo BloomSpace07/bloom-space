@@ -1,0 +1,27 @@
+{
+  "name": "bloom-space",
+  "version": "1.0.0",
+  "description": "Welcome to Bloom Space, a program to help you transform your rooftop to an urban oasis! This program helps you to plan your urban garden and teaches you more sustainable pratices and efficient techniques to help the environment.",
+  "main": "script.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BloomSpace07/bloom-space"
+  },
+  "keywords": [
+    "Garden",
+    "Planner",
+    "Gardening"
+  ],
+  "author": "BloomSpace07",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1"
+  }
+}
