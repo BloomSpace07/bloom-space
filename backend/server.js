@@ -23,6 +23,10 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
+app.get('/', (req, res) => {
+    res.send('Server is awake!');
+});
+
 // 
 app.post('/createAccount', async (req, res) => {
     let { username, password, email } = req.body;
