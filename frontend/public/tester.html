@@ -1,0 +1,384 @@
+<html>
+
+    <head>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                min-height: 100vh;
+                font-family: "Poppins", sans-serif;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+                    url("https://bloom-space07.web.app/images/home-bg-min.webp");
+                background-position: center;
+                background-repeat: none;
+                background-size: cover;
+                height: 100vh;
+            }
+
+            html body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .title {
+                color: #fff;
+                text-align: center;
+                font-size: 4em;
+                margin-bottom: 10px;
+            }
+
+            .sub-title {
+                color: #fff;
+                text-align: center;
+                font-size: 1.5em;
+                margin-top: 0px;
+            }
+
+            .wrapper {
+                width: 35%;
+                color: #fff;
+                /*     background: rgba(47, 109, 38, 0.2); */
+                background: rgba(0, 0, 0, 0.15);
+                border-radius: 20px;
+                padding: 30px 40px;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(15px);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            }
+
+            .wrapper * {
+                box-sizing: border-box;
+            }
+
+            .wrapper h1 {
+                font-size: 36px;
+                text-align: center;
+            }
+
+            .wrapper .input-box {
+                width: 100%;
+                height: 50px;
+                margin: 30px 0;
+                position: relative;
+            }
+
+            .wrapper .input-box:nth-of-type(2) {
+                margin-bottom: 10px;
+            }
+
+            .input-box input {
+                width: 100%;
+                height: 100%;
+                outline: none;
+                border: none;
+                background: transparent;
+                border: 2px solid rgba(255, 255, 255, 0.4);
+                border-radius: 40px;
+                font-size: 16px;
+                color: #fff;
+                padding: 20px 45px 20px 20px;
+            }
+
+            .input-box input::placeholder {
+                color: #fff;
+                font-weight: 600;
+            }
+
+            .input-box i {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 20px;
+            }
+
+            .wrapper .btn {
+                width: 100%;
+                height: 45px;
+                outline: none;
+                border-radius: 40px;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 600;
+                transition: 0.3s all ease-in-out;
+                color: #333;
+                background: #fff;
+                border: 2px solid rgba(255, 255, 255, 0.4);
+                margin: 20px 0;
+            }
+
+            .wrapper .btn:hover {
+                /* background-color: #2f6d26; */
+                /* background-color: #ddd; */
+                /* border: none; */
+                /* color: #333; */
+                /* box-shadow: 0 0 20px #2f6d26; */
+                transform: scale(1.05);
+            }
+
+            .result {
+                text-align: center;
+            }
+
+            @media screen and (max-width: 768px) {
+                .wrapper {
+                    width: 65%;
+                }
+            }
+
+            .remember-forgot,
+            .register-link {
+                font-size: 14.5px;
+                text-align: center;
+                margin: 10px auto;
+                font-weight: 500;
+            }
+
+            .remember-forgot span {
+                color: #fff;
+                text-decoration: none;
+                transition: 0.3s all ease-in-out;
+                text-decoration: underline;
+                text-decoration-color: #fff;
+                text-decoration-thickness: 2px;
+                cursor: pointer;
+            }
+
+            .register-link p span {
+                text-decoration: underline;
+                text-decoration-color: #fff;
+                color: #fff;
+                text-decoration-thickness: 2px;
+                font-weight: 600;
+                transition: 0.3s all ease-in-out;
+                cursor: pointer;
+            }
+
+            .login-container {
+                display: block;
+            }
+
+            .signup-container,
+            .forgot-password,
+            .reset-container {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <form>
+                <div class="login-container">
+                    <h1>Login</h1>
+                    <p class="result" id="loginResult"></p>
+                    <div class="input-box">
+                        <!-- <label for="user">Username</label> -->
+                        <input type="text" id="email" name="email" placeholder="Email" required>
+                        <i class="bx bxs-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <!-- <label for="pw">Password</label> -->
+                        <input type="password" id="password" name="pw" placeholder="Password" required>
+                        <i class="bx bxs-lock-alt"></i>
+                    </div>
+                    <div class="remember-forgot">
+                        <span onclick="switchViews('forgot-password')">Forgot password?</span>
+                    </div>
+                    <button type="button" onclick="login()" class="btn">Login</button>
+                    <button type="button" class="btn" onclick="continueGuest()">Continue as a Guest</button>
+                    <div class="register-link">
+                        <p>Don't have an account? <span onclick="switchViews('signup-container')">Register
+                                here</span></p>
+                    </div>
+                </div>
+                <div class="reset-container">
+                    <h1>Reset Password</h1>
+                    <p class="result" id="resetResult"></p>
+                    <div class="input-box">
+                        <!-- <label for="user">Username</label> -->
+                        <input type="text" id="resetEmail" name="email" placeholder="Email" required>
+                        <i class="bx bxs-envelope"></i>
+                    </div>
+                    <div class="input-box">
+                        <!-- <label for="user">Username</label> -->
+                        <input type="password" id="resetPassword" name="password" placeholder="New Password" required>
+                        <i class='bx bxs-lock'></i>
+                    </div>
+                    <button type="button" onclick="resetPasswordReq()" class="btn">Reset Password</button>
+                    <div class="register-link">
+                        <p><span onclick="switchViews('login-container')">Return to login</span></p>
+                    </div>
+                </div>
+                <div class="signup-container">
+                    <h1>Create an Account</h1>
+                    <p class="result" id="registerResult"></p>
+                    <div class="input-box">
+                        <!-- <label for="user">Username</label> -->
+                        <input type="text" id="registerUsername" name="user" placeholder="Username" required>
+                        <i class="bx bxs-user"></i>
+                    </div>
+                    <div class="input-box">
+                        <!-- <label for="pw">Password</label> -->
+                        <input type="password" id="registerPassword" name="pw" placeholder="Password" required>
+                        <i class="bx bxs-lock-alt"></i>
+                    </div>
+                    <div class="input-box">
+                        <!-- <label for="pw">Password</label> -->
+                        <input type="email" id="registerEmail" name="email" placeholder="Email" required>
+                        <i class='bx bxs-envelope'></i>
+                    </div>
+                    <button type="button" onclick="createAccount()" class="btn">Create Account</button>
+                    <div class="register-link">
+                        <p>Already have an account? <span onclick="switchViews('login-container')">Login here</span></p>
+                    </div>
+                </div>
+                <div class="forgot-password">
+                    <h1>Forgot Password</h1>
+                    <p class="result" id="forgotResult"></p>
+                    <div class="input-box">
+                        <!-- <label for="user">Username</label> -->
+                        <input type="email" id="forgotEmail" name="email" placeholder="Email" required>
+                        <i class='bx bxs-envelope'></i>
+                    </div>
+                    <button type="button" onclick="forgotPassword()" class="btn">Reset Password</button>
+                    <div class="register-link">
+                        <p>Already have an account? <span onclick="switchViews('login-container')">Login here</span></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            function switchViews(reqView) {
+                document.querySelectorAll("form > div").forEach((container) => {
+                    container.style.display = "none";
+                    if (container.className == reqView) {
+                        container.style.display = "block";
+                    }
+                });
+            }
+
+            async function createAccount() {
+                const username = document.getElementById('registerUsername').value;
+                const password = document.getElementById('registerPassword').value;
+                const email = document.getElementById('registerEmail').value;
+                if (username == "" || password == "" || email == "") {
+                    document.getElementById('registerResult').innerHTML = "Please fill in all fields";
+                    return;
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    document.getElementById("registerResult").innerHTML = "Please enter a valid email address.";
+                    return;
+                }
+
+                const response = await fetch('https://bloom-space.onrender.com/createAccount', { //for deployment
+                // const response = await fetch('http://localhost:3000/createAccount', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password, email })
+                });
+
+                const result = await response.json();
+
+                document.getElementById('registerResult').innerHTML = result.message;
+            }
+
+            async function login() {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                if (email == "" || password == "") {
+                    document.getElementById('loginResult').innerHTML = "Please fill in all fields";
+                    return;
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    document.getElementById("loginResult").innerHTML = "Please enter a valid email address.";
+                    return;
+                }
+
+                const response = await fetch('https://bloom-space.onrender.com/login', { //for deployment
+                // const response = await fetch('http://localhost:3000/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const result = await response.json();
+
+                if (response.status == 202) {
+                    switchViews("reset-container");
+                    return;
+                }
+
+                document.getElementById('loginResult').innerHTML = await result.message;
+            }
+
+            async function forgotPassword() {
+                const email = document.getElementById('forgotEmail').value;
+                if (email == "") {
+                    document.getElementById('forgotResult').innerHTML = "Please fill in all fields";
+                    return;
+                }
+
+                const response = await fetch('https://bloom-space.onrender.com/forgotPassword', { //for deployment
+                // const response = await fetch('http://localhost:3000/forgotPassword', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const result = await response.json();
+
+                document.getElementById('forgotResult').innerHTML = result.message;
+            }
+
+            async function resetPasswordReq() {
+                const email = document.getElementById('resetEmail').value;
+                const password = document.getElementById('resetPassword').value;
+                if (email == "" || password == "") {
+                    document.getElementById('resetResult').innerHTML = "Please fill in all fields";
+                    return;
+                }
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    document.getElementById("resetResult").innerHTML = "Please enter a valid email address.";
+                    return;
+                }
+
+                console.log(email, password);
+
+                const response = await fetch('https://bloom-space.onrender.com/resetPassword', { //for deployment
+                // const response = await fetch('http://localhost:3000/resetPassword', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const result = await response.json();
+
+                document.getElementById('resetResult').innerHTML = result.message;
+            }
+        </script>
+    </body>
+
+</html>
