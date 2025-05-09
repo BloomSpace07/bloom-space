@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
+const https = require('https');
 dotenv.config();
 const saltRounds = 10;
 
@@ -157,3 +158,15 @@ async function resetPassword(email, password) {
 app.listen(port, () => {
     console.log(`Bloom Space Server listening on port ${port}`)
 });
+
+function pingSelf() {
+    https.get("https://bloom-space.onrender.com", (res) => {
+        console.log(`Self-ping status: ${res.statusCode}`);
+    }).on('error', (err) => {
+        console.error('Ping failed:', err.message);
+    });
+}
+
+// Start self-pinging loop
+setInterval(pingSelf, 12 * 60 * 1000); // 12 minutes
+pingSelf(); // Initial ping
