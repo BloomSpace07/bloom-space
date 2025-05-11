@@ -39,7 +39,7 @@ body {
     z-index: 999;
     top: 0;
     left: 0;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0.1)), url("images/home-bg-min.webp");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0.2)), url("images/home-bg-2-min.webp");
     background-repeat: no-repeat;
     background-size: cover;
     user-select: none;
@@ -444,10 +444,38 @@ body {
     visibility: visible;
 }
 
+.grid-control-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 2em;
+}
+
+.grid-control-menu i {
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    font-weight: 200;
+    color: #fff;
+    font-size: 2em;
+}
+
+.grid-control-menu .bx-save:hover {
+    color: #bd87df;
+}
+
+.grid-control-menu .bx-folder-open:hover {
+    color: #1e90ff;
+}
+
+.grid-control-menu .bx-reset:hover {
+    color: #dc143c;
+}
+
 .grid-container {
     width: fit-content;
     height: fit-content;
-    margin: 5% auto;
+    margin: 3% auto;
     position: relative;
     overflow: hidden;
     border: 7px solid #B39E6A;

@@ -160,6 +160,9 @@ function progressBar() {
             bar.style.width = nextWidth + '%';
         }
     }
+    if (width >= 99) {
+        bar.style.width = "100%";
+    }
 }
 
 const questionChoices = [
@@ -265,4 +268,12 @@ function showQuizAnswers(matchedPlants) {
             });
         })
         .catch(error => console.error('Error loading the JSON data:', error));
+}
+
+function openProfile() {
+    if (localStorage.getItem("user") == "guest") {
+        window.location.href = "login.html";
+        return;
+    }
+    window.location.href = "profile.html";
 }

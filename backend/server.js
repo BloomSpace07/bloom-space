@@ -158,6 +158,57 @@ async function resetPassword(email, password) {
     }
 }
 
+app.post('/saveGarden', async (req, res) => {
+    let { email, gardenLayout, configType } = req.body;
+    email = String(email), configType = String(configType);
+    const result = await saveGarden(email, gardenLayout, configType);
+    res.status(result[0]);
+    res.json({ message: result[1] });
+});
+
+async function saveGarden(email, gardenLayout, configType) {
+    try {
+        await client.connect();
+        const db = client.db('bloom_space');
+        const collection = db.collection('gardens');
+        const foundUser = await collection.findOne({ email: email });
+        if (!foundUser) {
+            const result = await collection.insertOne({ email: email, [configType]: gardenLayout });
+            return [200, "Garden saved successfully"];
+        }
+        const result = await collection.updateOne({ email: email }, { $set: { [configType]: gardenLayout } });
+        return [200, "Garden saved successfully"];
+    } finally {
+        await client.close();
+    }
+}
+
+app.post('/loadGarden', async (req, res) => {
+    let { email, configType } = req.body;
+    email = String(email), configType = String(configType);
+    const result = await loadGarden(email, configType);
+    res.status(result[0]);
+    res.json({ message: result[1] });
+});
+
+async function loadGarden(email, configType) {
+    try {
+        await client.connect();
+        const db = client.db('bloom_space');
+        const collection = db.collection('gardens');
+        const foundUser = await collection.findOne({ email: email });
+        if (!foundUser) {
+            return [404, "No gardens found"];
+        }
+        if (!foundUser[configType]) {
+            return [404, "No gardens found"];
+        }
+        return [200, foundUser[configType]];
+    } finally {
+        await client.close();
+    }
+}
+
 // Start server
 app.listen(port, () => {
     console.log(`Bloom Space Server listening on port ${port}`)

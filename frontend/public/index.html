@@ -27,6 +27,7 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&?family=Martel:wght@200;300;400;600;700;800;900&display=swap"
       rel="stylesheet">
+    <script>history.scrollRestoration = "manual"</script>
   </head>
 
   <body data-page-id="index">
@@ -93,6 +94,7 @@
     </div>
     <div id="mySidenav" class="sidenav">
       <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+      <i class="bx bx-user-circle" onclick="openProfile()"></i>
       <a href="index.html?visited=true">Garden Planner</a>
       <a href="gardening-handbook.html">Gardening Handbook</a>
       <a href="blog.html">Blog</a>
@@ -106,7 +108,7 @@
         <ul class="planner-plant-list" id="planner-plant-list"></ul>
       </div>
       <div class="garden-grid">
-        <h1>Garden Planner&nbsp;<i class='bx bx-reset' onclick="resetGrid()"></i></h1>
+        <h1>Garden Planner</h1>
         <h2 id="drag-start-text">Drag a plant over to get started!</h2>
         <h3 onclick="openPopup()">Not sure where to start? <span>Click here</span> to get started!</h3>
 
@@ -120,6 +122,20 @@
             <li>Vertical Planter</li>
             <li>Balcony Planter</li>
           </ul>
+        </div>
+
+        <div class="grid-control-menu">
+          <div class="grid-control-menu-item profile-popup-container">
+            <i class="bx bx-save" onclick="saveGarden()"></i>
+            <span class="profile-popup-text" id="saveGardenPopup">Login in to use this feature</span>
+          </div>
+          <div class="grid-control-menu-item profile-popup-container">
+            <i class="bx bx-folder-open" onclick="loadGarden()"></i>
+            <span class="profile-popup-text" id="loadGardenPopup">Login in to use this feature</span>
+          </div>
+          <div class="grid-control-menu-item profile-popup-container">
+            <i class="bx bx-reset" onclick="resetGrid()"></i>
+          </div>
         </div>
 
         <div class="grid-container planner-config">
@@ -187,9 +203,18 @@
     <script src="script.js"></script>
     <!-- jsDelivr :: Sortable :: Latest (https://www.jsdelivr.com/package/npm/sortablejs) -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <!-- Initialize SortableJS Logic -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // Set user to guest
+        if (!localStorage.getItem("user")) {
+          localStorage.setItem("user", "guest");
+        }
+
+        // Load plant data for sidebar
         getPlantData();
+
+        // Initialize element variables
         const sidebar = document.querySelector('#planner-plant-list');
         const grid = document.querySelector('#grid');
         const verticalPlanter = document.querySelector('#vertical-planter');
@@ -411,6 +436,105 @@
         });
         plannerConfigs[0].style.display = "block";
       });
+    </script>
+    <!-- Server Communication -->
+    <script>
+      async function saveGarden() {
+        if (localStorage.getItem("user") == "guest") {
+          document.getElementById("saveGardenPopup").classList.toggle("show");
+          setTimeout(() => {
+            document.getElementById("saveGardenPopup").classList.toggle("show");
+          }, 3000)
+          return;
+        }
+        const email = localStorage.getItem("user");
+        let gardenLayout = [];
+        let currentConfig = document.querySelector(".planner-selected");
+        let configType = "";
+        if (currentConfig.innerText == "Raised Garden Bed") {
+          currentConfig = document.querySelector(".grid");
+          configType = "garden-bed";
+        }
+        else if (currentConfig.innerText == "Vertical Planter") {
+          currentConfig = document.querySelector(".vertical-planter");
+          configType = "vertical-planter";
+        }
+        else {
+          currentConfig = document.querySelector(".balcony-planter");
+          configType = "balcony-planter";
+        }
+        currentConfig.querySelectorAll("div").forEach((plant) => {
+          gardenLayout.push(plant.textContent.trim());
+        });
+
+        const response = await fetch('https://bloom-space.onrender.com/saveGarden', { //for deployment
+          // const response = await fetch('http://localhost:3000/saveGarden', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, gardenLayout, configType })
+        });
+
+        const result = await response.json();
+        console.log(result);
+      }
+
+      async function loadGarden() {
+        if (localStorage.getItem("user") == "guest") {
+          document.getElementById("loadGardenPopup").classList.toggle("show");
+          setTimeout(() => {
+            document.getElementById("loadGardenPopup").classList.toggle("show");
+          }, 3000)
+          return;
+        }
+        const email = localStorage.getItem("user");
+        let currentConfig = document.querySelector(".planner-selected");
+        let configType = "";
+        if (currentConfig.innerText == "Raised Garden Bed") {
+          currentConfig = document.querySelector(".grid");
+          configType = "garden-bed";
+        }
+        else if (currentConfig.innerText == "Vertical Planter") {
+          currentConfig = document.querySelector(".vertical-planter");
+          configType = "vertical-planter";
+        }
+        else {
+          currentConfig = document.querySelector(".balcony-planter");
+          configType = "balcony-planter";
+        }
+
+        const response = await fetch('https://bloom-space.onrender.com/loadGarden', { //for deployment
+          // const response = await fetch('http://localhost:3000/loadGarden', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, configType })
+        });
+
+        const result = await response.json();
+        console.log(result.message);
+
+        if (response.status == 200) {
+          // Loop # of grid spaces
+          // Loop over plants in results
+          // Check if plant name == plantInfo name
+          // If so, set grid space at index == plantInfo container
+          const plantInfoList = document.querySelectorAll(".planner-plant-list li");
+          let blocks = currentConfig.querySelectorAll("div");
+          result.message.forEach((plant) => {
+            plantInfoList.forEach((plantInfo) => {
+              if (plantInfo.innerText == plant) {
+                const clone = plantInfo.cloneNode(true);
+                blocks[result.message.indexOf(plant)].innerHTML = "";
+                blocks[result.message.indexOf(plant)].appendChild(clone);
+                applyClickListener(clone);
+              }
+            });
+          });
+        }
+      }
     </script>
   </body>
 
