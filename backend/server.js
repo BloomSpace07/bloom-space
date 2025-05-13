@@ -46,7 +46,7 @@ async function createAccount(username, password, email) {
             return [409, "Account already exists with this email"];
         }
         const hashedPassword = await hashPasswords(password);
-        const result = await collection.insertOne({ username: username, password: hashedPassword, email: email, climate: [] });
+        const result = await collection.insertOne({ username: username, password: hashedPassword, email: email });
         return [201, "Account created successfully"];
     } finally {
         await client.close();
@@ -174,9 +174,15 @@ async function saveGarden(email, gardenLayout, configType) {
         const foundUser = await collection.findOne({ email: email });
         if (!foundUser) {
             const result = await collection.insertOne({ email: email, [configType]: gardenLayout });
-            return [200, "Garden saved successfully"];
+            if (result.acknowledged) {
+                return [200, "Garden saved successfully"];
+            }
+            return [500, "Error saving garden"];
         }
         const result = await collection.updateOne({ email: email }, { $set: { [configType]: gardenLayout } });
+        if (!result.acknowledged) {
+            return [500, "Error saving garden"];
+        }
         return [200, "Garden saved successfully"];
     } finally {
         await client.close();
@@ -204,6 +210,63 @@ async function loadGarden(email, configType) {
             return [404, "No gardens found"];
         }
         return [200, foundUser[configType]];
+    } finally {
+        await client.close();
+    }
+}
+
+app.post('/loadProfile', async (req, res) => {
+    let { email } = req.body;
+    email = String(email);
+    const result = await loadProfile(email);
+    res.status(result[0]);
+    res.json({ message: result[1] });
+});
+
+async function loadProfile(email) {
+    try {
+        await client.connect();
+        const db = client.db('bloom_space');
+        let collection = db.collection('users');
+        const foundUser = await collection.findOne({ email: email });
+        if (!foundUser) {
+            return [404, "User not found"];
+        }
+        delete foundUser.password;
+        collection = db.collection('gardens');
+        const foundGardens = await collection.findOne({ email: email });
+        if (foundGardens) {
+            delete foundGardens._id, delete foundGardens.email;
+            foundUser.savedGardens = foundGardens;
+        }
+        return [200, foundUser];
+    } finally {
+        await client.close();
+    }
+}
+
+app.post('/saveQuizResults', async (req, res) => {
+    let { email, plantCriteriaObj, matchedPlantNames } = req.body;
+    email = String(email);
+    const result = await saveQuizResults(email, plantCriteriaObj, matchedPlantNames);
+    res.status(result[0]);
+    res.json({ message: result[1] });
+});
+
+async function saveQuizResults(email, plantCriteriaObj, matchedPlantNames) {
+    try {
+        await client.connect();
+        const db = client.db('bloom_space');
+        const collection = db.collection('users');
+        const foundUser = await collection.findOne({ email: email });
+        if (!foundUser) {
+            return [404, "User not found"];
+        }
+        const result = await collection.updateOne({ email: email }, { $set: { climate: plantCriteriaObj, recommendedPlants: matchedPlantNames } }, { upsert: true });
+        if (result.acknowledged) {
+            return [200, "Quiz results saved successfully"];
+        }
+        return [500, "Error saving quiz results"];
     } finally {
         await client.close();
     }

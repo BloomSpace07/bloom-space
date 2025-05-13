@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bloom Space</title>
+        <meta name="description"
+            content="Bloom Space urban garden planner with drag-and-drop planner, plant information, and more">
+        <meta name="keywords" content="Bloom, Space, Urban, Garden, Planner, Drag-and-drop, Plant Information">
+
+        <!-- CSS -->
+        <!-- <link rel="stylesheet" href="login.css"> -->
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="navigation.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- Icons + PWA -->
+        <link rel="icon" type="images/favicon" href="images/pwa/logo.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="images/pwa/logo.png">
+        <link rel="apple-touch-startup-image" href="images/pwa/logo.png">
+        <link rel="manifest" href="manifest.json">
+
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&?family=Martel:wght@200;300;400;600;700;800;900&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('images/profile-bg-min.webp');">
+
+    <!-- <body> -->
+        <div class="hamburger-icon" id="icon" onclick="openNav()">
+            <div class="icon-1" id="a"></div>
+            <div class="icon-2" id="b"></div>
+            <div class="icon-3" id="c"></div>
+            <div class="clear"></div>
+        </div>
+        <div id="mySidenav" class="sidenav">
+            <!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
+            <i class="bx bx-user-circle" onclick="openProfile()"></i>
+            <a href="index.html?visited=true">Garden Planner</a>
+            <a href="gardening-handbook.html">Gardening Handbook</a>
+            <a href="blog.html">Blog</a>
+            <a href="support.html">Support</a>
+        </div>
+        <div class="profile-container">
+            <div class="profile-header">
+                <h1><i class='bx bx-user-circle'></i>&nbsp;Profile</h1>
+            </div>
+            <div class="profile-info">
+                <div class="info-item">
+                    <label><i class='bx bx-user'></i> Username:</label>
+                    <span id="username">John Doe</span>
+                </div>
+                <div class="info-item">
+                    <label><i class='bx bx-envelope'></i> Email:</label>
+                    <span id="email">johndoe123</span>
+                </div>
+                <div class="info-item">
+                    <label><i class='bx bx-cloud'></i>Climate:</label>
+                    <span id="climate"></span>
+                </div>
+                <div class="info-item recommendedPlantsContainer">
+                    <label><i class='bx bx-leaf'></i> Recommended Plants:</label>
+                    <span id="recommendedPlants"></span>
+                </div>
+                <div class="info-item savedGardensContainer">
+                    <label><i class='bx bx-archive'></i> Saved Gardens:</label>
+                    <ul id="savedGardens"></ul>
+                </div>
+                <button class="sign-out-btn" onclick="signOut()"><i class='bx bx-log-out'></i>Sign Out</button>
+            </div>
+        </div>
+
+        <!-- JS -->
+        <script src="script.js"></script>
+        <script>
+            async function loadProfile() {
+                const email = localStorage.getItem("user");
+
+                const response = await fetch('https://bloom-space.onrender.com/loadProfile', { //for deployment
+                // const response = await fetch('http://localhost:3000/loadProfile', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                let result = await response.json();
+                result = result.message;
+                console.log(result);
+
+                document.getElementById("email").innerText = result.email;
+                document.getElementById("username").innerText = result.username;
+                if (result.savedGardens) {
+                    Object.keys(result.savedGardens).forEach((gardenKey, index) => {
+                        const garden = result.savedGardens[gardenKey];
+                        const upperLi = document.createElement("li");
+                        if (gardenKey == "garden-bed") {
+                            upperLi.innerText = "Raised Garden Bed:";
+                        }
+                        else if (gardenKey == "vertical-planter") {
+                            upperLi.innerText = "Vertical Planter:";
+                        }
+                        else {
+                            upperLi.innerText = "Balcony Planter:";
+                        }
+                        const ul = document.createElement("ul");
+                        const filteredGarden = [...new Set(garden.filter(plant => plant !== ""))];
+                        filteredGarden.forEach(plant => {
+                            const li = document.createElement("li");
+                            li.innerText = plant;
+                            ul.appendChild(li);
+                        });
+                        upperLi.appendChild(ul);
+                        document.getElementById("savedGardens").appendChild(upperLi);
+                    });
+                }
+
+                else {
+                    document.getElementById("savedGardens").innerText += "None saved yet!";
+                }
+
+                if (result.climate) {
+                    document.getElementById("climate").innerText = `Climate: ${result.climate.climate}, Season: ${result.climate.season}, Sunlight: ${result.climate.sunlight}`;
+                    result.recommendedPlants = result.recommendedPlants.join(", ");
+                    document.getElementById("recommendedPlants").innerText += result.recommendedPlants;
+                }
+                else {
+                    document.getElementById("climate").innerText += "No climate has been set!";
+                    document.getElementById("recommendedPlants").innerText += "None recommended yet! Take the quiz on our garden planner page to get started!";
+                }
+            }
+            function signOut() {
+                localStorage.setItem("user", "guest");
+                window.location.href = 'login.html';
+            }
+
+            loadProfile();
+        </script>
+    </body>
+
+</html>

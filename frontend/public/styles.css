@@ -936,7 +936,7 @@ button:disabled {
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 3em;
+    font-size: 3em !important;
     width: fit-content;
     cursor: pointer;
 }
@@ -1492,3 +1492,145 @@ body[data-page-id="support"] {
 }
 
 /** SUPPORT PAGE END */
+
+/** PROFILE PAGE START*/
+
+.profile-container {
+    /* background-color: #fff; */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 5% auto;
+    padding: 20px;
+    color: #fff;
+    background: transparent;
+    backdrop-filter: blur(40px);
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-header h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    /* color: #333; */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.info-item label {
+    font-weight: bold;
+    /* color: #333; */
+    display: flex;
+    align-items: center;
+}
+
+.info-item label i {
+    margin-right: 8px;
+    /* color: #666; */
+    /* width: 20%; */
+}
+
+.info-item span,
+.info-item ul {
+    /* color: #666; */
+    margin-left: 10px;
+    max-width: 75%;
+}
+
+.info-item ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-item ul li {
+    margin-bottom: 5px;
+}
+
+.bx {
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
+#savedGardens {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
+#savedGardens ul {
+    list-style-type: disc;
+    padding-left: 1.5em;
+    margin: 0;
+}
+
+#climate,
+#recommendedPlants {
+    text-align: right;
+}
+
+.sign-out-btn {
+    margin: 20px auto;
+    cursor: pointer;
+    border: 2px solid #dc143c;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #dc143c;
+    font-size: 1.2em;
+    transition: all 0.3s ease-in-out;
+    width: 50%;
+}
+
+.sign-out-btn:hover {
+    background-color: #dc143c;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-container {
+        width: 90%;
+        padding: 0;
+    }
+
+    .info-item {
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile-container {
+        width: 95%;
+    }
+
+    .savedGardensContainer {
+        align-items: flex-start;
+    }
+
+    #savedGardens {
+        flex-direction: column;
+    }
+
+    .recommendedPlantsContainer {
+        align-items: flex-start;
+    }
+}
+
+/** PROFILE PAGE END */

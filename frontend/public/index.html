@@ -444,7 +444,7 @@
           document.getElementById("saveGardenPopup").classList.toggle("show");
           setTimeout(() => {
             document.getElementById("saveGardenPopup").classList.toggle("show");
-          }, 3000)
+          }, 3000);
           return;
         }
         const email = localStorage.getItem("user");
@@ -477,7 +477,12 @@
         });
 
         const result = await response.json();
-        console.log(result);
+
+        document.getElementById("saveGardenPopup").innerText = result.message;
+        document.getElementById("saveGardenPopup").classList.toggle("show");
+        setTimeout(() => {
+          document.getElementById("saveGardenPopup").classList.toggle("show");
+        }, 3000);
       }
 
       async function loadGarden() {
@@ -485,7 +490,7 @@
           document.getElementById("loadGardenPopup").classList.toggle("show");
           setTimeout(() => {
             document.getElementById("loadGardenPopup").classList.toggle("show");
-          }, 3000)
+          }, 3000);
           return;
         }
         const email = localStorage.getItem("user");
@@ -514,7 +519,6 @@
         });
 
         const result = await response.json();
-        console.log(result.message);
 
         if (response.status == 200) {
           // Loop # of grid spaces
@@ -533,6 +537,13 @@
               }
             });
           });
+        }
+        else {
+          document.getElementById("loadGardenPopup").innerText = result.message;
+          document.getElementById("loadGardenPopup").classList.toggle("show");
+          setTimeout(() => {
+            document.getElementById("loadGardenPopup").classList.toggle("show");
+          }, 3000);
         }
       }
     </script>

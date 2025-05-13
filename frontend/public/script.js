@@ -211,6 +211,9 @@ async function quiz() {
             const matchedPlants = await findPlants(plantCriteria);
             console.log(matchedPlants);
             console.log(plantCriteria);
+            if (localStorage.getItem("user") != "guest") {
+                uploadQuizResults( localStorage.getItem("user"), plantCriteria, matchedPlants);
+            }
             showQuizAnswers(matchedPlants);
             return 0;
         }
@@ -276,4 +279,19 @@ function openProfile() {
         return;
     }
     window.location.href = "profile.html";
+}
+
+async function uploadQuizResults(email, plantCriteria, matchedPlants) {
+    const plantCriteriaObj = { climate: plantCriteria[0], sunlight: plantCriteria[1], season: plantCriteria[2] };
+    let matchedPlantNames = matchedPlants.map(plant => plant.name);
+    const response = await fetch('https://bloom-space.onrender.com/saveQuizResults', { //for deployment
+    // const response = await fetch('http://localhost:3000/saveQuizResults', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, plantCriteriaObj, matchedPlantNames })
+    });
+
+    const result = await response.json();
 }

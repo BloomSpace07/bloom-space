@@ -192,7 +192,7 @@
 
                 document.getElementById('loginResult').innerHTML = result.message;
                 localStorage.setItem("user", email);
-                window.location.href = "/";
+                window.location.href = "/?visited=true";
             }
 
             async function forgotPassword() {
@@ -248,7 +248,7 @@
 
             function continueGuest() {
                 localStorage.setItem("user", "guest");
-                window.location.href = "/";
+                window.location.href = "/?visited=true";
             }
         </script>
     </body>
