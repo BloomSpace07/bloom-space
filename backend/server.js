@@ -82,6 +82,10 @@ async function login(email, password) {
             }
             return [401, "Invalid email or password"];
         }
+        mailOptions.to = email;
+        mailOptions.subject = "New Log-In Detected";
+        mailOptions.text = `A new log-in has been detected on ${new Date().toLocaleDateString("en-US", { timeZone: "America/New_York" })} at ${new Date().toLocaleTimeString("en-US", { timeZone: "America/New_York" })}.`;
+        await transporter.sendMail(mailOptions);
         return [200, "Login successful"];
     } finally {
         await client.close();
