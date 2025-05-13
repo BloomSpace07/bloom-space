@@ -83,8 +83,8 @@ async function login(email, password) {
             return [401, "Invalid email or password"];
         }
         mailOptions.to = email;
-        mailOptions.subject = "New Log-In Detected";
-        mailOptions.text = `A new log-in has been detected on ${new Date().toLocaleDateString("en-US", { timeZone: "America/New_York" })} at ${new Date().toLocaleTimeString("en-US", { timeZone: "America/New_York" })}.`;
+        mailOptions.subject = "New Log-In Detected - Bloom Space";
+        mailOptions.text = `Your account (${foundUser.username}) was used to login to Bloom Space.\nDate: ${new Date().toLocaleDateString("en-US", { timeZone: "America/New_York" })}\nTime: ${new Date().toLocaleTimeString("en-US", { timeZone: "America/New_York" })}.\n\nIf you have not logged into Bloom Space recently, go to https://bloom-space07.web.app, sign out and select forgot password.`;
         await transporter.sendMail(mailOptions);
         return [200, "Login successful"];
     } finally {
