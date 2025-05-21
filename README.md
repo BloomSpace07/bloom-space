@@ -32,7 +32,7 @@ and install on your device
 ## Screenshots
 
 #### Splash Screen
-![App Screenshot](https://bloom-space07.web.app/images.rdme-screenshots/splash-screen.png)
+![App Screenshot](https://bloom-space07.web.app/images/rdme-screenshots/splash-screen.png)
 
 #### Home Screen
 ![App Screenshot](https://bloom-space07.web.app/images/rdme-screenshots/home-pg.png)
