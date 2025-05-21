@@ -221,6 +221,14 @@ body {
     .splash-screen h2 {
         font-size: 1.75em;
     }
+
+    .intro-screen h1 {
+        font-size: 1.25em;
+    }
+
+    .stage-one ul {
+        width: 90%;
+    }
 }
 
 /** INTRO SCREEN END */
