@@ -530,12 +530,12 @@
           // If so, set grid space at index == plantInfo container
           const plantInfoList = document.querySelectorAll(".planner-plant-list li");
           let blocks = currentConfig.querySelectorAll("div");
-          result.message.forEach((plant) => {
+          result.message.forEach((plant, index) => {
             plantInfoList.forEach((plantInfo) => {
               if (plantInfo.innerText == plant) {
                 const clone = plantInfo.cloneNode(true);
-                blocks[result.message.indexOf(plant)].innerHTML = "";
-                blocks[result.message.indexOf(plant)].appendChild(clone);
+                blocks[index].innerHTML = "";
+                blocks[index].appendChild(clone);
                 applyClickListener(clone);
               }
             });
