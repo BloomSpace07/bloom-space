@@ -1,6 +1,6 @@
 # Bloom Space
 
-Welcome to Bloom Space, a program to help you transform your rooftop to an urban oasis! This program helps you to plan your urban garden and teaches you more sustainable practices and efficient techniques to help the environment.
+Welcome to Bloom Space, a program to help you transform your rooftop to an urban oasis! This program helps you to plan your urban garden and teaches you about urban agriculture, sustainable practices, and efficient techniques to help the environment.
 
 
 ## Features
@@ -25,7 +25,9 @@ and install on your device
 ## Tech Stack
 
 **Client:** HTML, CSS, JavaScript
+
 **Server** NodeJS, ExpressJS, Bcrypt, NodeMailer
+
 **Database** MongoDB
 
 
